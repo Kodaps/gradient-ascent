@@ -59,8 +59,8 @@ dependencies:
 
 devDependencies:
   '@kodaps/notion-parse':
-    specifier: ^0.0.5
-    version: 0.0.5
+    specifier: ^0.0.12
+    version: 0.0.12
   '@types/negotiator':
     specifier: ^0.6.2
     version: 0.6.2
@@ -933,8 +933,8 @@ packages:
       jsbi: 4.3.0
       tslib: 2.6.2
 
-  /@kodaps/notion-parse@0.0.5:
-    resolution: {integrity: sha512-oL+2KN9mhmKbActgVAYqtPKdpYWe37Y6UHVSrPXf9L2lfAWkSPIcmmSgxGncfWxZFQ/mmJDHRauJUBYb6z8M0A==}
+  /@kodaps/notion-parse@0.0.12:
+    resolution: {integrity: sha512-ICqfhVqKtdG56kiZLlkdyOOmEW0GOjDqO3spZHWetjpOa3LcPGlvz/gZn/SFqBZTt2mukMpWSnKRjopuLLmhbQ==}
     dependencies:
       '@notionhq/client': 2.2.13
       jimp: 0.22.10

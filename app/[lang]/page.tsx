@@ -1,4 +1,4 @@
-import { findLatestPosts } from '@/lib/posts';
+import { findLatestPosts } from '@/lib/content';
 import { Lang, otherLang } from "@/lib/i18n";
 
 import { getTranslations } from './dictionaries';

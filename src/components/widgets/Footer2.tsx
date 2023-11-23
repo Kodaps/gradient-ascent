@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getPermalink } from "@/lib/posts";
+import { getPermalink } from "@/lib/content";
 
 import { footerData2 } from '@/shared/data';
 
