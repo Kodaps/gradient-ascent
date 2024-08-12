@@ -1,27 +1,56 @@
 
-
+# What is Gradient Ascent
 
 This is a fork of the [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+It is a starter template that I use as a basic for my personnal website, and it aims to show how to implement some features that I find useful.
+
+
 
 
 ## Roadmap
 
-- [] i18N support
-- [] SEO friendly
-  - :check: Sitemap
-  - :check: Structured data
-  - [] Robots file
-- [] Blog
+- [ ] i18N support
+- [ ] User interface
+  - [x] Header
+  - [ ] Footer
+  - [ ] Sidebar
+  - [ ] Hero
+  - [ ] Call to action
+  - [ ] Testimonials
+  - [ ] Pricing
+  - [ ] Features
+  - [ ] FAQ
+  - [ ] Contact form
+  - [ ] Blog
+  - [ ] Portfolio
+  - [ ] About
+  - [ ] Contact
+- [x] ShadCN UI library
+- [ ] SEO Features
+  - [ ] Sitemap
+  - [ ] Structured data
+  - [ ] Robots file
+  - [ ] altlang (i18N SEO)
+- [ ] Content Management
+  - [ ] Notion integration
+  - [ ] MDX content
+- [ ] Pages
+  - [ ] Blog
+  - [ ] Portfolio
+  - [ ] About
+  - [ ] Contact
 - [x] Dark mode
-- [] RSS feed
-- [] Klaro cookie consent management
-- [] PostHog analaytics, feature flags and session recording
-- [] Sentry error tracking
-- [] Google Tag Manager
-- [] Google Analytics
-- [] Notion integration for blog posts, pages and portfolio
-- [] MDX content
-- [X] ShadCN UI library
+- [ ] RSS feed
+- [ ] Third party integration
+  - [ ] Partytown script management
+  - [ ] Klaro cookie consent management
+  - [ ] PostHog analaytics, feature flags and session recording
+  - [ ] Sentry error tracking
+  - [ ] Google Tag Manager & Google Analytics
+  - [ ] Notion integration for blog posts, pages and portfolio
+- [ ] MDX content
+- [ ] Authentication (AuthJS)
+- [ ] E-commerce
 
 
 

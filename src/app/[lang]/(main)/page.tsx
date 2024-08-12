@@ -53,10 +53,27 @@ const Page =  async ({params : {lang}}: PageProps) => {
   const posts = await findLatestPosts(lang, 4);
 
   return (<>
-    <HeroSection>
-      <Header1>Gradient Ascent - A starter website for Next.Js by Kodaps</Header1>
-      <image></image>
-    </HeroSection>
+    <HeroSection
+      t={t}
+      lang={lang}
+      image={{
+        src:'/images/home/technical_white.jpg',
+        width: 1232,
+        height :928,
+        alt: 'a technical illustration'
+      }}
+
+      title='Gradient Ascent'
+      subtitle='A starter website for Next.Js by Kodaps'
+      callToAction2={{
+        text: 'Get Started',
+        href: '/getting-started'
+      }}
+      callToAction={{
+        text: 'Features',
+        href: '/features'
+      }}
+    />
     <Section variant="light">
       <Header2 title="Latest Posts" />
       <ul>
