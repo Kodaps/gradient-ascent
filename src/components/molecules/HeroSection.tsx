@@ -20,8 +20,8 @@ const HeroSection = ({t, title, subtitle, callToAction, callToAction2, image, id
 
   return (
     <Section id={id}>
-        <div className="py-12 md:py-20 flex flex-row">
-          <div className="pb-10 text-center md:pb-16 w-1/2 flex flex-col  align-middle">
+        <div className="py-12 md:py-20 flex flex-col md:flex-row">
+          <div className="pb-10 text-center md:pb-16 w-full md:w-1/2 flex flex-col  justify-items-center content-center">
             {title && <Header1 html={title} />}
             <div className="mx-auto max-w-3xl">
               {subtitle && <p className="mb-6 text-xl font-normal text-gray-600 dark:text-slate-400" 
@@ -44,7 +44,7 @@ const HeroSection = ({t, title, subtitle, callToAction, callToAction2, image, id
             </div>
           </div>
           {image && (
-            <div className="m-auto max-w-3xl overflow-hidden w-1/2">
+            <div className="m-auto max-w-3xl overflow-hidden w-full md:w-1/2">
               <AspectRatio ratio={4 / 3}>
                 <Image
                   {...image}
