@@ -1,6 +1,6 @@
 
 
-import { i18n as i18nConfig } from '@/config/i18n-config';
+import { i18n as i18nConfig } from '@/config/i18n.config';
 
 export type Lang = 'en'|'fr';
 

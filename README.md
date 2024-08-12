@@ -1,4 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
+
+This is a fork of the [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
+## Roadmap
+
+- [] i18N support
+- [] SEO friendly
+  - :check: Sitemap
+  - :check: Structured data
+  - [] Robots file
+- [] Blog
+- [x] Dark mode
+- [] RSS feed
+- [] Klaro cookie consent management
+- [] PostHog analaytics, feature flags and session recording
+- [] Sentry error tracking
+- [] Google Tag Manager
+- [] Google Analytics
+- [] Notion integration for blog posts, pages and portfolio
+- [] MDX content
+- [X] ShadCN UI library
+
+
+
 
 ## Getting Started
 

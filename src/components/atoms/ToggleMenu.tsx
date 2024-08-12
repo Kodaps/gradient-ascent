@@ -1,5 +1,10 @@
 import { IconMenu, IconX } from '@tabler/icons-react';
-import { ToggleMenuProps } from '@/shared/types';
+
+interface ToggleMenuProps {
+  handleToggleMenuOnClick: () => void;
+  isToggleMenuOpen: boolean;
+}
+
 
 const ToggleMenu = ({ handleToggleMenuOnClick, isToggleMenuOpen }: ToggleMenuProps) => (
   <button

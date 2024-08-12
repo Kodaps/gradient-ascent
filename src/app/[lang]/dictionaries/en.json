@@ -1,0 +1,103 @@
+{
+    "code_is_fun": "Code is fun!",
+    "home": {
+        "code_is_a_game_our_mission": "Coding is a game: it involves exploration, puzzles, mysteries... We help people discover the fun of coding!",
+        "title": "Homepage",
+        "metatitle": "Kodaps - Learn to Code",
+        "metadescription": "Discover React, Next JS, JavaScript, TypeScript, and other exciting technologies! "
+    },
+    "menu": {
+        "home": "Home",
+        "about": "About",
+        "blog": "Blog",
+        "resources": "Resources"
+    },
+    "blog": {
+        "subtitle": "Get up to date on our latest news, articles, and videos!",
+        "title": "Latest Articles",
+        "see_all": "See all",
+        "h1": "The Blog",
+        "category": "Category:",
+        "tagged": "Articles Tagged:",
+        "categories": "The blog categories",
+        "tags": "Blogs Posts Tags"
+    },
+    "hero": {
+        "tagline": "Learn code with ",
+        "title": "Dive deep into code with <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500'>kodaps</span>",
+        "subtitle": "We believe code should be fun.Join us on a journey of discovery in to the world of programming as we dive in to React, TypeScript, and NextJS and more!"
+    },
+    "read": "Read",
+    "link": {
+        "youtube": "https://www.youtube.com/channel/UC2DOovF-OjIQ6nHClUyLKKQ",
+        "facebook": "https://www.facebook.com/KodapsAcademy"
+    },
+    "submenu": {
+        "react": "React & Next JS",
+        "all_categories": "All",
+        "frameworks": "Frameworks",
+        "javascript": "JS, TS & NodeJS",
+        "backend": "Backend, DBs & APIs",
+        "coderlife": "Code Life"
+    },
+    "site": {
+        "title": "Learn to code"
+    },
+    "sitemap": {
+        "title": "Kodaps English Website pages",
+        "mainpages": "The main pages",
+        "metatitle": "Kodaps Sitemap",
+        "metadescription": "All the pages of the Kodaps website"
+    },
+    "switch_languages": "Version Française ici",
+    "newsletter": {
+        "title": "Newsletter",
+        "pitch": "Sign up for TechBytes - my (almost!) weekly newsletter where I share actionable tips, practical tech advice, exciting new libraries and frameworks I've found and high-quality insights from across the web, directly to your inbox.",
+        "h1": "Stay in the loop with TechBytes!",
+        "subtitle": "Tips, news, and resources delivered (amost) weekly straight to your inbox. It's free!",
+        "ul": {
+            "1": {
+                "title": "Tech Advice",
+                "desc": "Deep dives into emerging or established technologies (frameworks, libraries) and how they can benefit you"
+            },
+            "2": {
+                "title": "Insights & Discoveries",
+                "desc": "Where I share the fun and exciting stuff I've found on the web, and the insights I've gained from them."
+            },
+            "3": {
+                "title": "News & Updates",
+                "desc": "Stay in touch with what's going on in the world of tech, and the latest updates from us at Kodaps with new content, resources and courses."
+            }
+        }
+    },
+    "courses": {
+        "desc": "Courses, Projects, Guides Learning & Tutorials"
+    },
+    "resources": {
+        "desc": "Resources to help you understand, learn and build",
+        "h1": "Helpful resources"
+    },
+    "help": {
+        "desc": "Ask questions, Book a call or a live session. (coming soon)",
+        "h1": "Need Help?"
+    },
+    "documentation": {
+        "desc": "Books & Workbooks & Cheat Sheets (coming soon)",
+        "title": "Guides & Workbooks"
+    },
+    "learning-journey": {
+        "title": {
+            "git": "Stage 1: Git & GitHub"
+        },
+        "description": {
+            "git": "Get familiar with the basic tools of the trade that allow developers to work together"
+        },
+        "cta": {
+            "git": "Learn Git & GitHub"
+        }
+    },
+    "bits": {
+        "title": "Latest Questions",
+        "subtitle": "You asked (or we wondered!) and we answered. Some questions require a lengthy answer, others... not so much. Feel free to send in your own questions :)"
+    }
+}

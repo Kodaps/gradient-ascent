@@ -32,7 +32,7 @@ interface IconProps {
   className?: string;
 }
 
-export const Icon:React.FC<IconProps> = ({name, className}) => {
+export const Icon = ({name, className}: IconProps) => {
 
 
   switch (name) {
@@ -75,3 +75,5 @@ export const Icon:React.FC<IconProps> = ({name, className}) => {
   return <></>
 
 }
+
+export default Icon;
