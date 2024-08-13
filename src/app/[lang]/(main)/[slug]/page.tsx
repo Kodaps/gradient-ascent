@@ -7,12 +7,15 @@ import { getMDXComponent } from 'next-contentlayer2/hooks'
 
 import { findRelatedPosts, generateContentMetaData, getPermalink, getPageBySlug, getAlternateSlug } from '@/lib/content';
 import StructuredData from '@/components/atoms/StructuredData';
-import { LatestPosts } from '@/components/section/LatestPosts';
+
 import { Lang, getOtherLanguages } from '@/lib/i18n';
 import { getTranslations } from '../../dictionaries';
 import { Metadata, ResolvingMetadata } from 'next';
 import { AltLink } from '@/components/atoms/AltLangLink';
 import { allPages } from 'contentlayer/generated';
+import { LatestPosts } from '@/components/molecules/LatestPostsSection';
+import { Heading1 } from '@/components/atoms/Heading1';
+import { Section } from '@/components/atoms/Section';
 
 
 interface Params {
@@ -60,15 +63,15 @@ export default async function Page({ params: {lang, slug } }: Params) {
   return (
     <>
     { blogStructuredData && <StructuredData data={blogStructuredData} />}
-    <section className="mx-auto py-8 sm:py-16 lg:py-20">
+    <Section>
       <article>
         <header className={post.featuredImage ? 'text-center' : ''}>
           <AltLink altLink={altLink} hidden={true}>
           {t('switch_languages')}
         </AltLink>
-          <h1 className="leading-tighter font-heading mx-auto mb-8 max-w-3xl px-4 text-4xl font-bold tracking-tighter sm:px-6 md:text-5xl">
+          <Heading1>
             {post.title}
-          </h1>
+          </Heading1>
           {post.featuredImage ? (
             <Image
               src={post.featuredImage}
@@ -92,7 +95,7 @@ export default async function Page({ params: {lang, slug } }: Params) {
           <MDXContent />
           </div>
       </article>
-    </section>
+    </Section>
     <LatestPosts
         title={t('blog.title')}
         subtitle={t('blog.see_all')}

@@ -2,9 +2,9 @@
 title: Politique de Confidentialité
 enabled: true
 type: Page
-date: 2021-01-01
 slug: politique-de-confidentialite
 lang: fr
+route_name: privacy
 alts:
   - en: privacy-policy
 ---

@@ -3,7 +3,7 @@ import { Lang, routeToHref } from '@/lib/i18n';
 import { AspectRatio } from '../ui/aspect-ratio';
 import { Section } from '@/components/atoms/Section';
 import CTA, { CTAProps } from '../atoms/CTA';
-import { Header1 } from '../atoms/Header1';
+import { Heading1 } from '../atoms/Heading1';
 
 interface HeroProps {
   t: (key: string) => string,
@@ -22,7 +22,7 @@ const HeroSection = ({t, title, subtitle, callToAction, callToAction2, image, id
     <Section id={id}>
         <div className="py-12 md:py-20 flex flex-col md:flex-row">
           <div className="pb-10 text-center md:pb-16 w-full md:w-1/2 flex flex-col  justify-items-center content-center">
-            {title && <Header1 html={title} />}
+            {title && <Heading1 html={title} />}
             <div className="mx-auto max-w-3xl">
               {subtitle && <p className="mb-6 text-xl font-normal text-gray-600 dark:text-slate-400" 
                 dangerouslySetInnerHTML={{__html: t(subtitle)}}

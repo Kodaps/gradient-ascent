@@ -1,11 +1,10 @@
-import { findLatestPosts, getPermalink, getPermalinkByDocument } from '@/lib/content';
+import { findLatestPosts, getPermalink, getPermalinkByDocument, getRoute } from '@/lib/content';
 import { Lang, otherLang } from "@/lib/i18n";
 import { getTranslations } from '../dictionaries';
 import { Metadata } from 'next';
 import { Section } from '@/components/atoms/Section';
-import { Header2 } from '@/components/atoms/Header2';
-import { Header1 } from '@/components/atoms/Header1';
 import HeroSection from '@/components/molecules/HeroSection';
+import { Heading2 } from '@/components/atoms/Heading2';
 
 interface PageProps {
   params : {
@@ -67,15 +66,15 @@ const Page =  async ({params : {lang}}: PageProps) => {
       subtitle='A starter website for Next.Js by Kodaps'
       callToAction2={{
         text: 'Get Started',
-        href: '/getting-started'
+        href: '/en/getting-started'
       }}
       callToAction={{
         text: 'Features',
-        href: '/features'
+        href: getRoute(lang, 'features')
       }}
     />
     <Section variant="light">
-      <Header2 title="Latest Posts" />
+      <Heading2 title="Latest Posts" />
       <ul>
         {posts.map((post, index) => (
           <li key={index}>

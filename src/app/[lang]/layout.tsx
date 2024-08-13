@@ -4,6 +4,8 @@ import { auth } from "auth"
 // import { getDictionary } from './dictionaries';
 import { Lang } from "@/lib/i18n";
 
+import './klaro.css'
+
 // import { authConfig } from 'auth.config';
 
 // import CookieBanner from '@/components/widgets/CookieBanner';
@@ -17,6 +19,9 @@ interface Params {
 }
 
 import { Inter } from 'next/font/google'
+import Klaro from '@/components/widgets/KlaroConfig';
+import Script from 'next/script';
+import KlaroConfig from '@/components/widgets/KlaroConfig';
 
 
 const customFont = Inter({ subsets: ['latin'],  display:'swap',  variable: '--font-inter' });
@@ -40,8 +45,12 @@ const  RootLayout = async ({ children, params }: LayoutProps) => {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <KlaroConfig />
+        <Script strategy="beforeInteractive" 
+          src={`klaro-0.7-nocss.js`} />
       </head>
       { /* <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ''}/> */ }
+
       <body className="bg-white tracking-tight text-gray-900 antialiased dark:bg-zinc-900 dark:text-slate-300">
         <Providers session={session}>
           <main>{children}</main>

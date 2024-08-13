@@ -48,7 +48,6 @@ const coreFields:FieldDefs = {
   title: { type: 'string', required: true },
   author: { type: 'nested', of: Author, required: false },
   slug: { type: 'string', required: true },
-  date: { type: 'date', required: true },
   enabled: { type: 'boolean', required: false },
   notionId: { type: 'string', required: false },
   tags: {type: 'list', of: {type: 'string'}},
@@ -94,6 +93,7 @@ export const Page = defineDocumentType(() => ({
   fields: {
     ...coreFields,
     featuredImage: { type: 'string', required: false },
+    route_name: { type: 'string', required: true },
     metadata: { type: 'json', required: false },
     redirect: { type: 'string', required: false },
     subject: { type: 'string', required: false },
@@ -109,6 +109,7 @@ export const Post = defineDocumentType(() => ({
   filePathPattern: `post/**/*.md`,
   fields: {
     ...coreFields,
+    date: { type: 'date', required: true },
     featuredImage: { type: 'string', required: false },
     video: { type: 'string', required: false },
     category: { type: 'string', required: true },

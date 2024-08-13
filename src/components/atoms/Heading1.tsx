@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 
-export const Header1 = ({ variant, className, children, html }: HeaderProps) => {
+export const Heading1 = ({ variant, className, children, html }: HeaderProps) => {
 
   const classes= `leading-tighter font-heading mb-6 text-5xl font-bold tracking-tighter md:text-6xl sm:text-4xl sm:leading-none group font-heading ${className}`;
 

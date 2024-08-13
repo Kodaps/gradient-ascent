@@ -3,8 +3,8 @@ title: Privacy Policy
 enabled: true
 type: Page
 slug: privacy-policy
-date: 2021-01-01
 lang: en
+route_name: privacy
 alts:
   - fr: politique-de-confidentialite
 ---

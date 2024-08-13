@@ -60,6 +60,7 @@ const unHyphenate = (str: string|undefined) => {
 }
 
 
+
 export const findDocumentById = (id: string) => {
   const idNoHyphen = unHyphenate(id);
   return allDocumentsUnsorted.find((item) => unHyphenate(item.notionId) == idNoHyphen);
@@ -71,9 +72,13 @@ const allPeople = allPeopleUnsorted.sort(sortByDate).filter(filterByEnabled);
 const allPortfolios = allPortfoliosUnsorted.sort(sortByDate).filter(filterByEnabled);
 
 
+
+
 const filterByLang = (lang: Lang) => {
   return (item: DocumentTypes) => item.lang == lang || item.lang == 'all';
 }
+
+
 
 export const allDocuments = (type: DocumentTypeNames, lang: Lang) => {
 
@@ -83,15 +88,32 @@ export const allDocuments = (type: DocumentTypeNames, lang: Lang) => {
     case 'Post':
       return allPosts.filter(filterByLang(lang));
     case 'Page':
-      return allPages.filter(filterByLang(lang));;
+      return allPages.filter(filterByLang(lang));
     case 'Person':
-      return allPeople.filter(filterByLang(lang));;
+      return allPeople.filter(filterByLang(lang));
     case 'Portfolio':
-      return allPortfolios.filter(filterByLang(lang));;
+      return allPortfolios.filter(filterByLang(lang));
     default:
       return ret;
   }
 };
+
+export const getRoute = (lang: Lang, routeName: string) => {
+
+  if (routeName === 'home') {
+    return `/${lang}`;
+  }
+
+  const page = allPages.filter(filterByLang(lang)).find((item) => item.route_name == routeName);
+
+  if (!page) {
+    return `/${lang}`;
+  }
+
+  return `/${lang}/${page.slug}`;
+  
+
+}
 
 
 const allContent:AllContentById = {
