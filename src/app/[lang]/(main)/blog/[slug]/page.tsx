@@ -6,15 +6,15 @@ import { redirect, notFound } from 'next/navigation';
 // import { YoutubeEmbed } from '@/components/widgets/YoutubeEmbed';
 import type { Metadata } from 'next'
 
-import { findRelatedPosts, generateContentMetaData, generateBlogPostStructuredData, getPermalink, renderMarkdown, generateFAQSchema, getPostBySlug, parseContent, getAlternateSlug } from '@/lib/content';
+import { findRelatedPosts, generateContentMetaData, generateBlogPostStructuredData, getPermalink, renderMarkdown, generateFAQSchema, getPostBySlug, parseContent, getAlternateSlug, getAltLinks } from '@/lib/content';
 import StructuredData from '@/components/atoms/StructuredData';
 import { LatestPosts } from '@/components/molecules/LatestPostsSection';
 import { getTranslations } from '@/app/[lang]/dictionaries';
 import { getOtherLanguages, Lang } from '@/lib/i18n';
-import { AltLink } from '@/components/atoms/AltLangLink';
 // import FAQs2 from '@/components/widgets/FAQs2';
 import { Article } from '@/components/blog/Article';
 import { allPosts } from 'contentlayer/generated';
+import { AltLinkManager } from '@/components/altlinks/AltLinkManager';
 
 
 export async function generateMetadata({ params: {slug, lang} }:BlogPostParams):Promise<Metadata> {
@@ -65,13 +65,7 @@ export default async function BlogPostPage({ params: {lang, slug} }: BlogPostPar
   let otherLang:Lang = getOtherLanguages(lang)[0];
 
 
-  if (post?.alts) {
-    const alt = getAlternateSlug(post.alts, otherLang);
-    if (alt) {
-        altLink = getPermalink(alt, 'Post', otherLang as Lang);
-    }
-  }
-
+  const altLinks = getAltLinks(post);
 
   const posts = await findRelatedPosts(post, lang, 4);
 
@@ -85,9 +79,7 @@ export default async function BlogPostPage({ params: {lang, slug} }: BlogPostPar
     <>
     <StructuredData data={generateBlogPostStructuredData(post)} />
     { FAQStructuredData && <StructuredData data={FAQStructuredData} />}
-    <AltLink altLink={altLink} hidden={true}>
-      {t('switch_languages')}
-    </AltLink>
+    <AltLinkManager altLinks={altLinks} lang={lang} hidden={true}/>
     <Article post={post} lang={lang} />
     {/* (faq && faq.length > 0) && <FAQs2 items={faq.map((item) => {
       return {question: item.question, answer: renderMarkdown(item.answer)}

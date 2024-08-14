@@ -5,17 +5,17 @@ import { notFound, redirect } from 'next/navigation';
 
 import { getMDXComponent } from 'next-contentlayer2/hooks'
 
-import { findRelatedPosts, generateContentMetaData, getPermalink, getPageBySlug, getAlternateSlug } from '@/lib/content';
+import { findRelatedPosts, generateContentMetaData, getPermalink, getPageBySlug, getAlternateSlug, getAltLinks } from '@/lib/content';
 import StructuredData from '@/components/atoms/StructuredData';
 
 import { Lang, getOtherLanguages } from '@/lib/i18n';
 import { getTranslations } from '../../dictionaries';
 import { Metadata, ResolvingMetadata } from 'next';
-import { AltLink } from '@/components/atoms/AltLangLink';
 import { allPages } from 'contentlayer/generated';
 import { LatestPosts } from '@/components/molecules/LatestPostsSection';
 import { Heading1 } from '@/components/atoms/Heading1';
 import { Section } from '@/components/atoms/Section';
+import { AltLinkManager } from '@/components/altlinks/AltLinkManager';
 
 
 interface Params {
@@ -46,15 +46,8 @@ export default async function Page({ params: {lang, slug } }: Params) {
   const MDXContent = getMDXComponent(post?.body?.code || '')
 
   let altLink: string = '';
-  let otherLang:Lang = getOtherLanguages(lang)[0];
 
-
-  if (post?.alts) {
-    const alt = getAlternateSlug(post.alts, otherLang);
-    if (alt) {
-        altLink = getPermalink(alt, 'Page', otherLang as Lang);
-    }
-  }
+  const altLinks = getAltLinks(post);
 
   const posts = await findRelatedPosts(post, lang, 4);
 
@@ -66,9 +59,7 @@ export default async function Page({ params: {lang, slug } }: Params) {
     <Section>
       <article>
         <header className={post.featuredImage ? 'text-center' : ''}>
-          <AltLink altLink={altLink} hidden={true}>
-          {t('switch_languages')}
-        </AltLink>
+          <AltLinkManager altLinks={altLinks} lang={lang} hidden={true}/>
           <Heading1>
             {post.title}
           </Heading1>

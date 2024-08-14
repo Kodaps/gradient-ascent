@@ -4,7 +4,7 @@ type: Page
 tags: []
 lang: fr
 slug: a-propos
-route_name: about
+coreSlug: about
 title: A propos de Gradient Ascent
 
 ---

@@ -4,7 +4,7 @@ type: Page
 tags: []
 lang: fr
 slug: fonctionalites-gradient-ascent
-route_name: features
+coreSlug: features
 title: Les fonctionnalités de Gradient Ascent
 
 ---

@@ -2,7 +2,7 @@ import md from 'markdown-it';
 import hljs from 'highlight.js';
 
 import { Metadata } from 'next';
-import { getOtherLanguages, Lang, LANGS, otherLang } from '@/lib/i18n';
+import { getOtherLanguages, Lang, LANGS } from '@/lib/i18n';
 import { BlogPosting, FAQPage, Organization, Person, WithContext } from 'schema-dts';
 
 type QAPair = {
@@ -27,8 +27,9 @@ import {
   NestedTypeNames,
   allDocuments as allDocumentsUnsorted,
 } from 'contentlayer/generated';
+import { LinkFormat } from '@/components/altlinks/AltLinkProvider';
 
-type ContentDocumentTypes = DocumentTypes;
+type ContentDocumentTypes = Exclude<DocumentTypes, Page|PersonContent>;
 
 
 
@@ -43,7 +44,7 @@ const sortByDate = (post1: ContentDocumentTypes, post2: ContentDocumentTypes) =>
   return post1.date < post2.date ? 1 : -1;
 };
 
-const filterByEnabled = (item: ContentDocumentTypes) => {
+const filterByEnabled = (item: DocumentTypes) => {
   if (item.enabled === undefined) {
     return true;
   }
@@ -67,8 +68,8 @@ export const findDocumentById = (id: string) => {
 }
 
 const allPosts = allPostsUnsorted.sort(sortByDate).filter(filterByEnabled);
-const allPages = allPagesUnsorted.sort(sortByDate).filter(filterByEnabled);
-const allPeople = allPeopleUnsorted.sort(sortByDate).filter(filterByEnabled);
+const allPages = allPagesUnsorted.filter(filterByEnabled);
+const allPeople = allPeopleUnsorted.filter(filterByEnabled);
 const allPortfolios = allPortfoliosUnsorted.sort(sortByDate).filter(filterByEnabled);
 
 
@@ -79,39 +80,82 @@ const filterByLang = (lang: Lang) => {
 }
 
 
-
-export const allDocuments = (type: DocumentTypeNames, lang: Lang) => {
+export const allDocuments = (type: DocumentTypeNames) => {
 
   const ret: Array<DocumentTypes> = []
 
   switch (type) {
     case 'Post':
-      return allPosts.filter(filterByLang(lang));
+      return allPosts;
     case 'Page':
-      return allPages.filter(filterByLang(lang));
+      return allPages;
     case 'Person':
-      return allPeople.filter(filterByLang(lang));
+      return allPeople; ;
     case 'Portfolio':
-      return allPortfolios.filter(filterByLang(lang));
+      return allPortfolios;
     default:
       return ret;
   }
 };
 
-export const getRoute = (lang: Lang, routeName: string) => {
 
-  if (routeName === 'home') {
+export const allDocumentsByLang = (type: DocumentTypeNames, lang: Lang) => {
+
+  return allDocuments(type).filter(filterByLang(lang));
+
+};
+
+export const getPermalinkByCoreSlug = (lang: Lang, coreSlug: string) => {
+
+  if (coreSlug === 'home') {
     return `/${lang}`;
   }
 
-  const page = allPages.filter(filterByLang(lang)).find((item) => item.route_name == routeName);
-
-  if (!page) {
-    return `/${lang}`;
+  const page = allDocumentsByLang('Page', lang).find((item) => item.coreSlug == coreSlug);
+  if (page) {
+    return `/${lang}/${page.slug}`;
   }
 
-  return `/${lang}/${page.slug}`;
-  
+  const blog = allDocumentsByLang('Post', lang).find((item) => item.coreSlug == coreSlug);
+  if (blog) {
+    return `/${lang}/blog/${blog.slug}`;
+  }
+
+  return `/${lang}`;
+
+
+}
+
+export const getAltLinks = (doc: DocumentTypes) => {
+
+  // we only have en and fr in our example
+
+
+  const links:LinkFormat = {};
+  for(let lang of LANGS) {
+    links[lang] = '';
+  }
+
+
+  // create links from page alternates
+  if (doc.type == 'Page') {
+    const docs = allPages.filter((itm) => itm.coreSlug === doc.coreSlug);
+    for(let doc of docs) {
+      links[doc.lang] = getPermalinkByDocument(doc);
+    }
+    return links;
+  }
+
+    // create links from page alternates
+    if (doc.type == 'Post') {
+      const docs = allPosts.filter((itm) => itm.coreSlug === doc.coreSlug);
+      for(let doc of docs) {
+        links[doc.lang] = getPermalinkByDocument(doc);
+      }
+      return links;
+    }
+
+  return links;
 
 }
 
@@ -157,11 +201,11 @@ export const getPortfolioBySlug = (slug: string) => {
 
 
 export const allPostsByLang = (lang: Lang) => {
-  return allDocuments('Post', lang) as Array<Post>;
+  return allDocumentsByLang('Post', lang) as Array<Post>;
 };
 
 export const allPagesByLang = (lang: Lang) => {
-  return allDocuments('Page', lang) as Array<Page>;
+  return allDocumentsByLang('Page', lang) as Array<Page>;
 };
 
 export const getAlternateSlug = (alts: Array<AltLink>, lang: Lang): string | undefined => {
@@ -191,8 +235,10 @@ export interface PostContent {
   lead: string;
   intro?: string;
   sections: Array<string>;
+  faq?: Array<QAPair>;
   takeaway?: string;
 }
+
 
 const slugify = (value = '') => {
   if (!value) {
@@ -201,7 +247,7 @@ const slugify = (value = '') => {
   return value.toLowerCase().replaceAll(' ', '-');
 };
 
-export const getPermalink = (key: string, linkType: LinkType, lang: Lang, debug = false) => {
+export const getPermalink = (key: string, linkType: LinkType, lang: Lang) => {
 
   if (!key) {
     return `/${lang}/blog`;
@@ -334,32 +380,21 @@ export const generateFAQSchema = (post: PostContent) => {
   return schema;
 };
 
-export const generateContentMetaData = (type: LinkType, post: Post | Page | Bit | null): Metadata => {
+export const generateContentMetaData = (type: LinkType, post: Post | Page | null): Metadata => {
   let data: Metadata = { title: post?.title };
 
   if (!post) {
     return data;
   }
 
-  if (post?.alts) {
-    const lang = post.lang as Lang;
-    const canonical = getPermalink(post.slug, type, lang);
+  const altlinks = getAltLinks(post);
+  const lang = post.lang as Lang;
+  const canonical = getPermalink(post.slug, type, lang);
 
-    const otherLangs = getOtherLanguages(lang);
-
-    let alt = getAlternateSlug(post.alts, otherLangs[0]);
-
-    let en = lang == 'en' ? canonical : alt ? getPermalink(alt, post.type, 'en') : null;
-    let fr = lang == 'fr' ? canonical : alt ? getPermalink(alt, post.type, 'fr') : null;
-
-    data.alternates = {
-      canonical,
-      languages: {
-        en: en,
-        fr: fr,
-      },
-    };
-  }
+  data.alternates = {
+    canonical,
+    languages: altlinks
+  };
 
   return data;
 };
@@ -576,7 +611,9 @@ export const renderMarkdown = (content: string, showHighlight = true) => {
         if (lang && hljs.getLanguage(lang)) {
           try {
             return hljs.highlight(str, { language: lang }).value;
-          } catch (__) {}
+          } catch (err) {
+            console.error(err);
+          }
         }
         return ''; // use external default escaping
       }

@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 
 
 import Link from 'next/link';
-import { AltLink } from '@/components/atoms/AltLangLink';
+import { AltLink } from '@/components/altlinks/AltLangLink';
 import { Post } from 'contentlayer/generated';
 
 interface SitemapParams {

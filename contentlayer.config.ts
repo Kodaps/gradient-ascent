@@ -48,6 +48,7 @@ const coreFields:FieldDefs = {
   title: { type: 'string', required: true },
   author: { type: 'nested', of: Author, required: false },
   slug: { type: 'string', required: true },
+  coreSlug: { type: 'string', required: true },
   enabled: { type: 'boolean', required: false },
   notionId: { type: 'string', required: false },
   tags: {type: 'list', of: {type: 'string'}},
@@ -64,6 +65,7 @@ export const Portfolio = defineDocumentType(() => ({
   filePathPattern: `portfolio/**/*.md`,
   fields: {
     ...coreFields,
+    date: { type: 'date', required: true },
     prompt: { type: 'string', required: false },
     engine: { type: 'string', required: false },
     description : { type: 'string', required: false },
@@ -93,7 +95,6 @@ export const Page = defineDocumentType(() => ({
   fields: {
     ...coreFields,
     featuredImage: { type: 'string', required: false },
-    route_name: { type: 'string', required: true },
     metadata: { type: 'json', required: false },
     redirect: { type: 'string', required: false },
     subject: { type: 'string', required: false },

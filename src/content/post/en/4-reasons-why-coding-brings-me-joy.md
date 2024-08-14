@@ -6,6 +6,7 @@ date: 2021-09-12T00:00:00.000+00:00
 featuredImage: /images/post/sinclair-zx81.png
 updatedAt: 2024-07-28T17:13:00.000Z
 video_script: []
+coreSlug: code-joy
 enabled: true
 category: CoderLife
 tags: []

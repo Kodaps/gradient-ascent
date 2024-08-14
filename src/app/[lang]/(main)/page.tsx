@@ -1,10 +1,12 @@
-import { findLatestPosts, getPermalink, getPermalinkByDocument, getRoute } from '@/lib/content';
-import { Lang, otherLang } from "@/lib/i18n";
+import { findLatestPosts, getPermalink, getPermalinkByDocument, getPermalinkByCoreSlug } from '@/lib/content';
+import { Lang, LANGS, otherLang } from "@/lib/i18n";
 import { getTranslations } from '../dictionaries';
 import { Metadata } from 'next';
 import { Section } from '@/components/atoms/Section';
 import HeroSection from '@/components/molecules/HeroSection';
 import { Heading2 } from '@/components/atoms/Heading2';
+import { AltLinkManager } from '@/components/altlinks/AltLinkManager';
+import { LinkFormat } from '@/components/altlinks/AltLinkProvider';
 
 interface PageProps {
   params : {
@@ -23,10 +25,11 @@ export async function generateMetadata( {params: {lang}}: PageProps ):Promise<Me
 ;
   const _otherLang = otherLang(lang);
   const canonical = lang + "/";
-  const alts: {[key:string]: string} = {
-    [lang] : canonical,
-    [_otherLang] : otherLang + "/"
-  };
+
+  const alts:LinkFormat = {};
+  for(const _lang of LANGS) {
+    alts[_lang] = _lang + "/";
+  }
 
   return {
     title: t('home.metatitle'),
@@ -52,6 +55,7 @@ const Page =  async ({params : {lang}}: PageProps) => {
   const posts = await findLatestPosts(lang, 4);
 
   return (<>
+    <AltLinkManager lang={lang} altLinks={{en : '/en', fr: '/fr'}}/>
     <HeroSection
       t={t}
       lang={lang}
@@ -70,7 +74,7 @@ const Page =  async ({params : {lang}}: PageProps) => {
       }}
       callToAction={{
         text: 'Features',
-        href: getRoute(lang, 'features')
+        href: getPermalinkByCoreSlug(lang, 'features')
       }}
     />
     <Section variant="light">

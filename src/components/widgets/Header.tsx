@@ -17,6 +17,7 @@ import { isFeatureActive } from '@/lib/features';
 
 import { Flag } from 'lucide-react';
 import { useSession } from 'next-auth/react';
+import { ToggleLanguage } from '../altlinks/ToggleLanguage';
 
 interface HeaderProps {
   lang: Lang,
@@ -161,16 +162,7 @@ const Header = ({lang, dict}: HeaderProps) => {
           </nav>
           <nav className="hidden md:flex flex-row gap-2">
           <ToggleDarkMode />
-          { langHref && <Button asChild variant="outline">
-            <Link
-            className="inline-flex items-center p-2.5 text-sm "
-            aria-label="Switch Language "
-            href={langHref}
-           >
-            {otherLang}
-            <Flag className="ml-2 h-[1.2rem] w-[1.2rem]" />
-            </Link>
-          </Button>}
+          <ToggleLanguage lang={lang} />
           </nav>
 
 

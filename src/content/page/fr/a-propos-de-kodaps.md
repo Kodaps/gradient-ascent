@@ -6,6 +6,7 @@ author:
   name: David Hockley
   slug: david-hockley
 redirect: about
+coreSlug: about-kodaps
 date: 2021-01-01
 alts:
   - en: about

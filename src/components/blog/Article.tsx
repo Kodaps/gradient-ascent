@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Lang } from "@/lib/i18n";
-import { getPermalink, parseContent, renderMarkdown } from "@/lib/content";
-import { AltLink } from "../atoms/AltLangLink";
-import { YouTubeEmbed } from "../widgets/YouTubeEmbed";
-import { Item } from "./Item";
+import { getAltLinks, getPermalink, parseContent, renderMarkdown } from "@/lib/content";
 import { Person, Post } from "contentlayer/generated";
-import { compareDesc, format, parseISO } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 import { ArticleSection } from "./ArticleSection";
+import { YouTubeEmbed } from "../widgets/YouTubeEmbed";
+import { AltLinkManager } from "../altlinks/AltLinkManager";
 
 interface ArticleProps {
   post: Post,
@@ -21,9 +20,12 @@ export const Article:React.FC<ArticleProps> = ({post, lang, type, hideHeader}) =
 
   const parsedContent =  parseContent(post.body.raw);
 
+  const altLinks = getAltLinks(post);
+
   const img = post.image?.src || post.featuredImage;
 
   return  <section className={`mx-auto ${hideHeader ? '' : 'py-8 sm:py-16'} lg:py-20`}>
+    <AltLinkManager altLinks={altLinks} lang={lang} hidden />
   <article>
     { (!hideHeader) && <header className={post.featuredImage ? 'text-center' : ''}>
       <p className="mx-auto max-w-5xl px-4 sm:px-6">
@@ -41,7 +43,7 @@ export const Article:React.FC<ArticleProps> = ({post, lang, type, hideHeader}) =
         : <p className="flex-grow dark:text-slate-400 text-lg">{post.description}</p>
       }
       </div>
-      { post.video ? <div className='max-w-3xl mx-auto'><YoutubeEmbed  className='w-full' embedId={post.video}/></div> :
+      { post.video ? <div className='max-w-3xl mx-auto'><YouTubeEmbed  className='w-full' embedId={post.video}/></div> :
       <>{img ? (
         <><Image
           src={img}

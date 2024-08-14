@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Lang } from "@/utils/i18n";
 import { getPermalink, parseContent, renderMarkdown } from "@/utils/content";
-import { AltLink } from "../atoms/AltLangLink";
+import { AltLink } from "../altlinks/AltLangLinks";
 import { YoutubeEmbed } from "../widgets/YoutubeEmbed";
 import { Item } from "./Item";
 import { Person, Bit } from "contentlayer/generated";

@@ -38,16 +38,11 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest, response: NextResponse) {
 
-    console.log("middleware called");
-
     const pathname = request.nextUrl.pathname;
 
-    console.log(pathname);
 
     if (pathname.startsWith(`/api/`)) {
       // use auth middleware for api routes
-      console.log("API redirect");
-
 
       return auth(request as unknown as NextApiRequest, response as unknown as NextApiResponse);
     }
@@ -67,8 +62,6 @@ export function middleware(request: NextRequest, response: NextResponse) {
 
       if (doc) {
         const url = getPermalinkByDocument(doc)
-        console.log("permalink redirect");
-
         return NextResponse.redirect(new URL(url, request.url));
       }
     }
@@ -77,7 +70,6 @@ export function middleware(request: NextRequest, response: NextResponse) {
     // Localisation : 1. Check if there is any supported locale in the pathname
     if (i18n.locales.some(locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`)) {
       // if so, we are good to go
-      console.log("locale is good, no redirect");
       return;
     }
 
@@ -85,8 +77,6 @@ export function middleware(request: NextRequest, response: NextResponse) {
     let locale = getLocale(request) || i18n.defaultLocale;
 
     // Localisation : 3. Redirect based on the locale
-    console.log(`locale redirect : ${locale}`);
-
     return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url));
 
 }

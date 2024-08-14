@@ -4,7 +4,7 @@ type: Page
 tags: []
 lang: en
 slug: gradient-ascent-features
-route_name: features
+coreSlug: features
 title: Gradient Ascent Features
 
 ---
@@ -12,22 +12,25 @@ title: Gradient Ascent Features
 Here are the features that are planned for this starter. 
 
 
-## Content
+## General
 
 
-✅ ContentLayer2 schema
+✅ MDX 
 
 
-	✅  Blogs, 
+## ContentLayer based content
 
 
-	✅  Pages, 
+✅  Blogs Posts, 
 
 
-	✅  Portfolio
+✅  Pages, 
 
 
-	🔳  Product 
+✅  Portfolio
+
+
+🔳  Product 
 
 
 ## SEO 
@@ -52,19 +55,4 @@ Here are the features that are planned for this starter.
 
 
 ## Auth
-
-
-## Auth
-
-
-Auth
-
-
-Auth
-
-
- 
-
-
-## 
 

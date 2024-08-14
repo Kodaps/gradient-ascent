@@ -4,7 +4,7 @@ type: Page
 tags: []
 lang: en
 slug: about
-route_name: about
+coreSlug: about
 title: About Gradient Ascent
 
 ---

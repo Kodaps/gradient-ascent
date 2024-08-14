@@ -4,7 +4,7 @@ enabled: true
 type: Page
 slug: politique-de-confidentialite
 lang: fr
-route_name: privacy
+coreSlug: privacy
 alts:
   - en: privacy-policy
 ---
