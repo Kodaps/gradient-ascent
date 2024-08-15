@@ -14,14 +14,14 @@ It is a starter template that I use as a basic for my personnal website, and it 
   - [x] Header
   - [ ] Footer
   - [ ] Sidebar
-  - [ ] Hero
-  - [ ] Call to action
+  - [x] Hero
+  - [x] Call to action
   - [ ] Testimonials
   - [ ] Pricing
   - [ ] Features
   - [ ] FAQ
   - [ ] Contact form
-  - [ ] Blog
+  - [x] Blog
   - [ ] Portfolio
   - [ ] About
   - [ ] Contact
@@ -30,12 +30,12 @@ It is a starter template that I use as a basic for my personnal website, and it 
   - [ ] Sitemap
   - [ ] Structured data
   - [ ] Robots file
-  - [ ] altlang (i18N SEO)
+  - [x] altlang (i18N SEO)
 - [ ] Content Management
   - [ ] Notion integration
   - [ ] MDX content
 - [ ] Pages
-  - [ ] Blog
+  - [x] Blog
   - [ ] Portfolio
   - [ ] About
   - [ ] Contact
@@ -43,7 +43,7 @@ It is a starter template that I use as a basic for my personnal website, and it 
 - [ ] RSS feed
 - [ ] Third party integration
   - [ ] Partytown script management
-  - [ ] Klaro cookie consent management
+  - [x] Klaro cookie consent management
   - [ ] PostHog analaytics, feature flags and session recording
   - [ ] Sentry error tracking
   - [ ] Google Tag Manager & Google Analytics
