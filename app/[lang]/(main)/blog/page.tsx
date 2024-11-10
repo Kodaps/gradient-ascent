@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { List } from '@/components/blog/List';
 
-import { findLatestPosts } from '@/utils/content';
-import { Lang } from "@/utils/i18n";
+import { findLatestPosts } from '@/lib/content';
+import { Lang } from "@/lib/i18n";
 import { Metadata } from 'next';
-import { getTranslations, Translator } from '../../dictionaries';
+import { langs, useTranslation, Translator } from "@/lib/i18n";
 import { allPortfolios } from 'contentlayer/generated';
 interface Params {
   params : {
@@ -19,9 +19,9 @@ const getTitle = (t:Translator, param: string) => {
 
 
 export async function generateMetadata({ params: {lang} }: Params):Promise<Metadata> {
-  return { 
-    title: 'The Kodaps blog', 
-    description: 'Where code is fun' 
+  return {
+    title: 'The Kodaps blog',
+    description: 'Where code is fun'
   };
 
 }
@@ -29,7 +29,7 @@ export async function generateMetadata({ params: {lang} }: Params):Promise<Metad
 
 
 export default async function BlogIndex({params:{lang}}:Params) {
-  let t = await getTranslations(lang);
+  const {t} = await useTranslation(lang);
   const posts = await findLatestPosts(lang, 20, 0);
 
   const portfolios = allPortfolios;

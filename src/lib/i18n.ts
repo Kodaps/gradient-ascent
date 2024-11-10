@@ -1,25 +1,102 @@
 
+//import 'server-only';
 
-import { i18n as i18nConfig } from '@/config/i18n.config';
+import { getOptions, i18n as i18nConfig, Locale } from '@/config/i18n.config';
 
-export type Lang = 'en'|'fr';
+import i18next, { createInstance } from 'i18next';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import { initReactI18next } from 'react-i18next/initReactI18next'
+// not using namespaces for now
 
-export const LANGS:Array<Lang> = ['en', 'fr'];
+const initI18next = async (lng: string, ns: string) => {
+  const i18nInstance = createInstance()
+  await i18nInstance
+    .use(initReactI18next)
+    .use(resourcesToBackend((language: string, namespace: string) => import(`../translations/${language}.json`)))
+    .init(getOptions(lng, ns))
+  return i18nInstance
+}
 
-export const otherLang  = (lang:Lang) => lang === 'en' ? 'fr' : 'en';
+interface Options {
+  keyPrefix?: string
+}
 
-const langs:Array<Lang> = i18nConfig.locales as unknown as Array<Lang>;
+
+export async function useTranslation(lng: string, ns = 'common', options:Options = {}) {
+  const i18nextInstance = await initI18next(lng, ns)
+  return {
+    t: i18nextInstance.getFixedT(lng, Array.isArray(ns) ? ns[0] : ns, options.keyPrefix),
+    i18n: i18nextInstance
+  }
+}
+
+export type Translator = (key:string) => string;
+
+
+/*
+
+import 'server-only';
+import { Dict, _t } from '@/lib/i18n';
+import { i18n, Locale } from '@/config/i18n.config';
+
+
+interface D {
+  en : () => Promise<Dict>,
+  fr : () => Promise<Dict>,
+}
+
+
+const dictionaries:D = {
+  en: () => import('./dictionaries/en.json').then((module) => module.default),
+  fr: () => import('./dictionaries/fr.json').then((module) => module.default),
+};
+
+
+export const getDictionary = async (lang:Locale = i18n.defaultLocale) => (await dictionaries[lang] || dictionaries.en)();
+
+export type Translator = (key:string) => string;
+
+export const useTranslations = async (lang:Locale =  i18n.defaultLocale):Promise<Translator> => {
+
+  const dict = await getDictionary(lang);
+  return (key:string) => _t(key, dict);
+}
+
+*/
+
+
+
+export type Lang = Locale;
+
+// no namepace
+
+
+
+// export type Locale;
+
+export const langs:Array<Locale> = i18nConfig.locales as unknown as Array<Locale>;
+
+export const defaultLang = i18nConfig.defaultLocale as Locale;
+
+export const otherLangs  = (lang:Locale) => {
+  return langs.filter((_lang) => _lang !== lang);
+}
+
+export const otherLang  = (lang:Locale) => {
+  return langs.find((_lang) => _lang !== lang) || defaultLang;
+}
+
 
 export type Dict = {
   [key:string]: string|Dict
 }
 
-export const getOtherLanguages = (lang: Lang) => {
+export const getOtherLanguages = (lang: Locale) => {
   return langs.filter((_lang) => _lang != lang);
 } 
 
 
-
+/*
 function getFromDictionnary(keys: Array<string>, dict: Dict|string):Dict|string {
 
   if (typeof dict == "string") {
@@ -60,6 +137,8 @@ export const _t = (key: string, dict: Dict): string => {
 
   return ret;
 }
+*/
+
 
 
 const baseRoutes = [
@@ -75,6 +154,7 @@ interface transRoutes {
   }
 }
 
+// TODO: convert to MDX
 const routeTranslations:transRoutes = {
   'about': {
     'fr': 'a-propos-de-kodaps',
@@ -86,7 +166,7 @@ const routeTranslations:transRoutes = {
   }
 };
 
-export const routeToHref = (route: Array<string>, lang: Lang) => {
+export const routeToHref = (route: Array<string>, lang: Locale) => {
 
   // 1. get page corresponsing to route in lang
   let base = route.shift();

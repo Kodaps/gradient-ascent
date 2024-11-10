@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 import * as React from "react"
 import Link from "next/link"
@@ -15,20 +15,19 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { isFeatureActive } from "@/lib/features"
-import { Dict, Lang, routeToHref, _t } from "@/lib/i18n"
+import { Dict, Lang, routeToHref, useTranslation,  } from "@/lib/i18n"
 import { IconBrain } from "@tabler/icons-react"
 
 
 interface NavigationMenuProps {
   className?: string
   blogLinks: { label: string; href: string, description?: string }[], 
-  dict: Dict,
   lang: Lang
 }
 
-export const FullNavigationMenu: React.FC<NavigationMenuProps> = ({className, blogLinks, dict, lang}) => {
+export const FullNavigationMenu= async ({className, blogLinks, lang}: NavigationMenuProps) => {
 
-  const t = (key: string) => _t(key, dict);
+  const {t} = await useTranslation(lang);
 
   return (
     <NavigationMenu>

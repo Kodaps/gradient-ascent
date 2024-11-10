@@ -11,11 +11,11 @@ import {
 
 
 const socials = [
-{ label: 'Twitter', icon: IconBrandTwitter, href: 'https://twitter.com/KodapsAcademy' },
-{ label: 'Instagram', icon: IconBrandInstagram, href: 'https://www.instagram.com/kodapsacademy/' },
-{ label: 'Facebook', icon: IconBrandFacebook, href: 'https://www.facebook.com/KodapsAcademy' },
+{ label: 'Twitter', icon: 'twitter', href: 'https://twitter.com/KodapsAcademy' },
+{ label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/kodapsacademy/' },
+{ label: 'Facebook', icon: 'facebook', href: 'https://www.facebook.com/KodapsAcademy' },
 /*{ label: 'RSS', icon: IconRss, href: '#' },*/
-{ label: 'Github', icon: IconBrandGithub, href: 'https://github.com/Kodaps' },
+{ label: 'Github', icon: 'github', href: 'https://github.com/Kodaps' },
 ];
 
 
@@ -40,10 +40,10 @@ interface HeaderData {
 // Header data
 export const headerData:HeaderData = {
   links: [
-    /*{
+    {
       label: 'Pages',
       href: '',
-      icon: IconChevronDown,
+      icon: 'chevron-down',
       links: [
         {
           label: 'Pricing',
@@ -54,7 +54,7 @@ export const headerData:HeaderData = {
           href: '/',
         },
       ],
-    },*/
+    },
     {
       label: 'about',
       href: '/about',
@@ -63,7 +63,7 @@ export const headerData:HeaderData = {
     {
       label: 'blog',
       href: '',
-      icon: IconChevronDown,
+      icon: 'down',
       links: [
         {
           label: 'all_categories',

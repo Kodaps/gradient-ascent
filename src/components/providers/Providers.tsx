@@ -4,7 +4,6 @@ import { ThemeProvider } from 'next-themes';
 import { SessionProvider } from "next-auth/react";
 import AltLinkProvider from '../altlinks/AltLinkProvider';
 import { Session } from 'next-auth';
-import { AltLinkContext } from '../altlinks/AltLinkProvider';
 
 
 

@@ -9,9 +9,7 @@ import type { Metadata } from 'next'
 import { findRelatedPosts, generateContentMetaData, generateBlogPostStructuredData, getPermalink, renderMarkdown, generateFAQSchema, getPostBySlug, parseContent, getAlternateSlug, getAltLinks } from '@/lib/content';
 import StructuredData from '@/components/atoms/StructuredData';
 import { LatestPosts } from '@/components/molecules/LatestPostsSection';
-import { getTranslations } from '@/app/[lang]/dictionaries';
-import { getOtherLanguages, Lang } from '@/lib/i18n';
-// import FAQs2 from '@/components/widgets/FAQs2';
+import { getOtherLanguages, Lang, useTranslation } from '@/lib/i18n';
 import { Article } from '@/components/blog/Article';
 import { allPosts } from 'contentlayer/generated';
 import { AltLinkManager } from '@/components/altlinks/AltLinkManager';
@@ -30,7 +28,7 @@ export async function generateStaticParams() {
 export default async function BlogPostPage({ params: {lang, slug} }: BlogPostParams) {
 
   // get dictionnary for localised text
-  const t = await getTranslations(lang);
+  const {t} = await useTranslation(lang);
 
   // get the post using the slug and lang params
   const post =  getPostBySlug( slug, lang);

@@ -1,17 +1,17 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-import { auth  } from "../auth";
+import { auth  } from "./auth";
 
-import { i18n } from '@/config/i18n.config'
+import { i18n } from './src/config/i18n.config'
 
 import { match as matchLocale } from '@formatjs/intl-localematcher'
 
 import Negotiator from 'negotiator';
 
-import { redirects } from '@/config/redirectTable.config';
+import { redirects } from './src/config/redirectTable.config';
 
-import { findDocumentById, getPermalinkByDocument } from '@/lib/content';
+import { findDocumentById, getPermalinkByDocument } from './src/lib/content';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 

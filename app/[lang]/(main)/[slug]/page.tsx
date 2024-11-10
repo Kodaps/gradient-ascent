@@ -5,11 +5,10 @@ import { notFound, redirect } from 'next/navigation';
 
 import { getMDXComponent } from 'next-contentlayer2/hooks'
 
-import { findRelatedPosts, generateContentMetaData, getPermalink, getPageBySlug, getAlternateSlug, getAltLinks } from '@/lib/content';
+import { findRelatedPosts, generateContentMetaData, getPageBySlug, getAltLinks } from '@/lib/content';
 import StructuredData from '@/components/atoms/StructuredData';
 
-import { Lang, getOtherLanguages } from '@/lib/i18n';
-import { getTranslations } from '../../dictionaries';
+import { Lang, getOtherLanguages, useTranslation } from '@/lib/i18n';
 import { Metadata, ResolvingMetadata } from 'next';
 import { allPages } from 'contentlayer/generated';
 import { LatestPosts } from '@/components/molecules/LatestPostsSection';
@@ -39,7 +38,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params: {lang, slug } }: Params) {
 
-  const t = await getTranslations(lang);
+  const {t} = await useTranslation(lang);
   const post = await getPageBySlug(slug, lang);
   if (!post) notFound();
 

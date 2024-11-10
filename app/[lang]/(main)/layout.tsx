@@ -33,7 +33,6 @@ import { Inter } from 'next/font/google'
 
 //import { Inter as CustomFont } from "next/font/google";
 
-import { getDictionary } from '../dictionaries';
 import { Lang } from "@/lib/i18n";
 
 const customFont = Inter({ subsets: ['latin'],  display:'swap',  variable: '--font-inter' });
@@ -52,12 +51,12 @@ export interface LayoutProps {
 const  RootLayout = async ({ children, params }: LayoutProps) => {
 
   const {lang} = params;
-  const dict = await getDictionary(lang);
 
   return <>
-      <Header lang={lang} dict={dict} />
-          <main className="gap-5 flex flex-col">{children}
-          </main>
+      <Header lang={lang} />
+      <main className="gap-5 flex flex-col">
+        {children}
+      </main>
       {/*<Footer2 lang={lang} /> */}
     </>;
 };

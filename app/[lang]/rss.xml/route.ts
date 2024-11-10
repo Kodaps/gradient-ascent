@@ -2,7 +2,7 @@ import Rss from "rss";
 
 import { Lang } from "@/lib/i18n";
 import { findLatestPosts, getPermalink } from "@/utils/content";
-import { getTranslations } from "../dictionaries";
+import { useTranslations } from "../../../translations/i18n";
 const BASE_URL = 'https://www.kodaps.dev'
 
 const generateRssFeed = async (lang: Lang) => {
@@ -10,7 +10,7 @@ const generateRssFeed = async (lang: Lang) => {
   try {
     const maxArticlesToShow = 10;
 
-    const t = await getTranslations(lang);
+    const t = await useTranslations(lang);
 
     const sortedArticles = await findLatestPosts(lang, maxArticlesToShow);
 

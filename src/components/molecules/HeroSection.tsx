@@ -1,23 +1,23 @@
 import Image, { ImageProps } from 'next/image';
-import { Lang, routeToHref } from '@/lib/i18n';
+import { Lang, routeToHref, useTranslation } from '@/lib/i18n';
 import { AspectRatio } from '../ui/aspect-ratio';
 import { Section } from '@/components/atoms/Section';
 import CTA, { CTAProps } from '../atoms/CTA';
 import { Heading1 } from '../atoms/Heading1';
 
 interface HeroProps {
-  t: (key: string) => string,
   id?: string,
   lang: Lang, 
   title: string, 
   subtitle: string,
   callToAction?: CTAProps,
   callToAction2?: CTAProps,
-  image: ImageProps
+  image: React.ReactNode
 }
 
-const HeroSection = ({t, title, subtitle, callToAction, callToAction2, image, id}: HeroProps) => {
+const HeroSection = async ({lang, title, subtitle, callToAction, callToAction2, image, id}: HeroProps) => {
 
+  const {t} = await useTranslation(lang);
   return (
     <Section id={id}>
         <div className="py-12 md:py-20 flex flex-col md:flex-row">
@@ -46,13 +46,7 @@ const HeroSection = ({t, title, subtitle, callToAction, callToAction2, image, id
           {image && (
             <div className="m-auto max-w-3xl overflow-hidden w-full md:w-1/2">
               <AspectRatio ratio={4 / 3}>
-                <Image
-                  {...image}
-                  className="mx-auto rounded-md bg-gray-400 dark:bg-slate-700 object-cover"
-                  //placeholder="blur"
-                  loading="eager"
-                  priority
-                />
+                { image }
               </AspectRatio>
             </div>
           )}

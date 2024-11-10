@@ -18,14 +18,15 @@ import {
   IconBook,
   IconTree,
   IconSchool,
-  IconDeviceGamepad
+  IconDeviceGamepad,
+  IconChevronDown
 } from '@tabler/icons-react';
 
 
 export type IconType = 'twitter'|'linkedin'|'facebook'|'instagram'|'youtube'|
                         'github'|'tailwind'|'rss'|'mail'|'phone'|'map'|'clock'|'arrow-down'|
                         'arrow-right-left'|'chevron-down'|'bulb'|'check'|'components'|'download'|
-                        'list-check'|'rocket'|'book'|'brain'|'game';
+                        'list-check'|'rocket'|'book'|'brain'|'game'|'bookmarks'|'tree'|'school'|'chevron-down';
 
 interface IconProps {
   name: IconType;
@@ -66,6 +67,9 @@ export const Icon = ({name, className}: IconProps) => {
       return <IconDeviceGamepad className={className || ''} />;
     case 'book':
       return <IconBook className={className || ''} />;
+
+    case 'chevron-down':
+      return <IconChevronDown className={className || ''} />;
 
     default:
       console.error("No match found for icon "+name);

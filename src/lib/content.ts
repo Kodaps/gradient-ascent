@@ -2,7 +2,7 @@ import md from 'markdown-it';
 import hljs from 'highlight.js';
 
 import { Metadata } from 'next';
-import { getOtherLanguages, Lang, LANGS } from '@/lib/i18n';
+import { getOtherLanguages, Lang, langs } from '@/lib/i18n';
 import { BlogPosting, FAQPage, Organization, Person, WithContext } from 'schema-dts';
 
 type QAPair = {
@@ -132,7 +132,7 @@ export const getAltLinks = (doc: DocumentTypes) => {
 
 
   const links:LinkFormat = {};
-  for(let lang of LANGS) {
+  for(let lang of langs) {
     links[lang] = '';
   }
 
