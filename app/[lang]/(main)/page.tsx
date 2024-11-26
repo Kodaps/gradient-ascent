@@ -24,7 +24,9 @@ export async function generateStaticParams() {
 }
 
 
-export async function generateMetadata( {params: {lang}}: PageProps ):Promise<Metadata> {
+export async function generateMetadata( {params}: PageProps ):Promise<Metadata> {
+
+  const {lang} = await params;
 
   const {t} = await useTranslation(lang);
 ;
@@ -53,8 +55,9 @@ export async function generateMetadata( {params: {lang}}: PageProps ):Promise<Me
 
 
 
-const Page =  async ({params : {lang}}: PageProps) => {
+const Page =  async ({params}: PageProps) => {
 
+  const lang = await params.lang;
   const {t} = await useTranslation(lang);
 
   const posts = await findLatestPosts(lang, 4);

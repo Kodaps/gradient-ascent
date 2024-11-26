@@ -26,7 +26,8 @@ import {
 export type IconType = 'twitter'|'linkedin'|'facebook'|'instagram'|'youtube'|
                         'github'|'tailwind'|'rss'|'mail'|'phone'|'map'|'clock'|'arrow-down'|
                         'arrow-right-left'|'chevron-down'|'bulb'|'check'|'components'|'download'|
-                        'list-check'|'rocket'|'book'|'brain'|'game'|'bookmarks'|'tree'|'school'|'chevron-down';
+                        'list-check'|'rocket'|'book'|'brain'|'game'|'bookmarks'|'tree'|'school'|'chevron-down'
+                        |'down' ;
 
 interface IconProps {
   name: IconType;
@@ -69,6 +70,7 @@ export const Icon = ({name, className}: IconProps) => {
       return <IconBook className={className || ''} />;
 
     case 'chevron-down':
+    case 'down':
       return <IconChevronDown className={className || ''} />;
 
     default:

@@ -50,7 +50,7 @@ export interface LayoutProps {
 
 const  RootLayout = async ({ children, params }: LayoutProps) => {
 
-  const {lang} = params;
+  const {lang} = await params;
 
   return <>
       <Header lang={lang} />

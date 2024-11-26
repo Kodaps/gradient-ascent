@@ -1,6 +1,7 @@
 
 const siteConfig = await import ('./src/config/site.config.mjs');
 const { withContentlayer } = await import ('next-contentlayer2')
+import { withPayload } from '@payloadcms/next/withPayload'
 
 
 /** @type {import('next').NextConfig} */
@@ -26,5 +27,5 @@ const nextConfig = {
 
 };
 
-export default withContentlayer(nextConfig);
+export default withPayload(withContentlayer(nextConfig));
 
