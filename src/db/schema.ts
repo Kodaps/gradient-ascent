@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import { getXataClient } from './xata'; // Generated client
+// import { getXataClient } from './xata_old'; // Generated client
 
 
 import {

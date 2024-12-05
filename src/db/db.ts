@@ -1,32 +1,28 @@
+import { neon, neonConfig, Pool } from '@neondatabase/serverless';
+import { sql } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/neon-serverless';
 
-//import mysql from "mysql2/promise"
-//import { drizzle } from "drizzle-orm/mysql2"
+import ws from 'ws';
 
-import { drizzle } from 'drizzle-orm/xata-http';
-import { getXataClient } from './xata'; // Generated client
-const xata = getXataClient({ apiKey: process.env.XATA_API_KEY || '', branch: 'main' });
-export const db = drizzle(xata);
+let connectionString = process.env.DATABASE_URL ?? '';
 
-/*
-export const connection = await mysql.createConnection({
-  host: process.env["DATABASE_HOST"],
-  user: process.env["DATABASE_USER"],
-  password: process.env["DATABASE_PASSWORD"],
-  database: process.env["DATABASE_NAME"],
-})
+// Configuring Neon for local development
+if (process.env.NODE_ENV === 'development') {
+  connectionString = 'postgres://postgres:postgres@db.localtest.me:5432/main';
+  neonConfig.fetchEndpoint = (host) => {
+    const [protocol, port] = host === 'db.localtest.me' ? ['http', 4444] : ['https', 443];
+    return `${protocol}://${host}:${port}/sql`;
+  };
+  const connectionStringUrl = new URL(connectionString);
+  neonConfig.useSecureWebSocket = connectionStringUrl.hostname !== 'db.localtest.me';
+  neonConfig.wsProxy = (host) => (host === 'db.localtest.me' ? `${host}:4444/v1` : '');
+  neonConfig.webSocketConstructor = ws;
+}
 
+//export const sql = neon(connectionString);
 
+const pool = new Pool({ connectionString });
 
-export const db = drizzle(connection);
-*/
+const db = drizzle(pool);
 
-/*
-const poolConnection = mysql.createPool({
-  host: process.env["DATABASE_HOST"],
-  user: process.env["DATABASE_USER"],
-  password: process.env["DATABASE_PASSWORD"],
-  database: process.env["DATABASE_NAME"],
-});
-
-export const db = drizzle(poolConnection);
-*/
+export { connectionString, db };

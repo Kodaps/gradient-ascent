@@ -1,6 +1,0 @@
-{
-  "databaseURL": "https://David-Hockley-s-workspace-5gt719.eu-central-1.xata.sh/db/gradient-ascent",
-  "codegen": {
-    "output": "src/db/xata.ts"
-  }
-}

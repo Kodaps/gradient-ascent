@@ -54,6 +54,12 @@ It is a starter template that I use as a basic for my personnal website, and it 
 
 
 
+https://github.com/payloadcms/payload/blob/main/templates/with-vercel-website
+
+https://ouassim.tech/notes/setting-up-a-nextjs-project-with-essential-best-practices/
+
+Use Just ?? 
+
 
 ## Getting Started
 
