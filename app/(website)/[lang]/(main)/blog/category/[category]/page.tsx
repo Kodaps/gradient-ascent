@@ -3,15 +3,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { List } from '@/components/blog/List';
 import { ListPage } from '@/components/blog/ListPage';
-import { Lang } from "@/utils/i18n";
+import { Lang } from "@/lib/i18n";
 
 
 import type { Metadata } from 'next'
 
 
 
-import { findLatestPostsByCategory, findAllCategories } from '@/utils/content';
-import { getTranslations, Translator } from 'app/[lang]/dictionaries';
+import { findLatestPostsByCategory, findAllCategories } from '@/lib/content';
+import { getTranslations, Translator } from 'app/[lang]/(website)/dictionaries';
 
 interface CategoryProps {
   params : {

@@ -1,16 +1,19 @@
 import Rss from "rss";
 
 import { Lang } from "@/lib/i18n";
-import { findLatestPosts, getPermalink } from "@/utils/content";
-import { useTranslations } from "../../../translations/i18n";
-const BASE_URL = 'https://www.kodaps.dev'
+import { findLatestPosts, getPermalink } from "@/lib/content";
+import { useTranslation } from "@/lib/i18n";
+import config from '@/config/site.config.mjs';
+
+const BASE_URL = config.origin;
+
 
 const generateRssFeed = async (lang: Lang) => {
 
   try {
     const maxArticlesToShow = 10;
 
-    const t = await useTranslations(lang);
+    const t = await useTranslation(lang);
 
     const sortedArticles = await findLatestPosts(lang, maxArticlesToShow);
 

@@ -1,8 +1,8 @@
 import { ListPage } from '@/components/blog/ListPage';
 
-import { findAllTags, findLatestPostsByTag } from '@/utils/content';
-import { Lang } from "@/utils/i18n";
-import { getTranslations, Translator } from 'app/[lang]/dictionaries';
+import { findAllTags, findLatestPostsByTag } from '@/lib/content';
+import { Lang } from "@/lib/i18n";
+import { getTranslations, Translator } from 'app/[lang]/(website)/dictionaries';
 interface TagProps {
   params : {
     tag?: string,
