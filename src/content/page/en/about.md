@@ -6,6 +6,6 @@ lang: en
 slug: about
 coreSlug: about
 title: About Gradient Ascent
-
 ---
+
 undefined

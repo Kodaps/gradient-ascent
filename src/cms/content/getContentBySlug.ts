@@ -1,41 +1,71 @@
-import { cache } from 'react'
-import { draftMode } from 'next/headers'
-import { CollectionSlug, getPayload } from 'payload'
-import configPromise from '@payload-config'
-import { Page as PayloadPage, Post as PayloadPost } from '@/config/payload-types'
+import { cache } from "react"
+import { draftMode } from "next/headers"
+import configPromise from "@payload-config"
+import { CollectionSlug, getPayload } from "payload"
 
+import {
+  Page as PayloadPage,
+  Post as PayloadPost,
+} from "@/config/payload-types"
 
-const queryContentBySlug = cache(async ({ slug, lang, collectionType }: { slug: string, lang: string, collectionType: CollectionSlug }) => {
+const queryContentBySlug = cache(
+  async ({
+    slug,
+    locale,
+    collectionType,
+  }: {
+    slug: string
+    locale: string
+    collectionType: CollectionSlug
+  }) => {
+    const { isEnabled: draft } = await draftMode()
 
-  const { isEnabled: draft } = await draftMode()
+    const payload = await getPayload({ config: configPromise })
 
-  const payload = await getPayload({ config: configPromise })
-
-  const result = await payload.find({
-    collection: collectionType,
-    draft,
-    limit: 1,
-    overrideAccess: draft,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
+    const result = await payload.find({
+      collection: collectionType,
+      draft,
+      limit: 1,
+      overrideAccess: draft,
+      pagination: false,
+      where: {
+        slug: {
+          equals: slug,
+        },
+        lang: {
+          equals: locale,
+        },
       },
-      lang: {
-        equals: lang,
-      },
-    },
-  })
+    })
 
-  return result.docs?.[0] || null
-})
+    return result.docs?.[0] || null
+  }
+)
 
-
-export function getPostBySlug ({slug, lang}: {slug:string, lang:string}): Promise<PayloadPost | null> {
-    return queryContentBySlug({ slug, lang, collectionType: 'posts' })
+export function getPostBySlug({
+  slug,
+  locale,
+}: {
+  slug: string
+  locale: string
+}): Promise<PayloadPost | null> {
+  return queryContentBySlug({
+    slug,
+    locale,
+    collectionType: "posts",
+  }) as Promise<PayloadPost | null>
 }
 
-export function getPageBySlug ({slug, lang}: {slug:string, lang:string}): Promise<PayloadPage | null> {
-  return queryContentBySlug({ slug, lang, collectionType: 'pages' })
+export function getPageBySlug({
+  slug,
+  locale,
+}: {
+  slug: string
+  locale: string
+}): Promise<PayloadPage | null> {
+  return queryContentBySlug({
+    slug,
+    locale,
+    collectionType: "pages",
+  }) as Promise<PayloadPage | null>
 }
-

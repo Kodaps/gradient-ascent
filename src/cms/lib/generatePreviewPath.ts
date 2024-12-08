@@ -1,8 +1,8 @@
-import { CollectionSlug } from 'payload'
+import { CollectionSlug } from "payload"
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
-  posts: '/blog',
-  pages: '',
+  posts: "/blog",
+  pages: "",
 }
 
 type Props = {

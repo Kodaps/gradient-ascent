@@ -1,11 +1,10 @@
-'use client'
+"use client"
 
-import { cn } from '@cms/lib/cn'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from "react"
+import { cn } from "@cms/lib/cn"
+import { getClientSideURL } from "@cms/lib/getUrl"
 
-import type { Props as MediaProps } from '../types'
-
-import { getClientSideURL } from '@cms/lib/getUrl'
+import type { Props as MediaProps } from "../types"
 
 export const VideoMedia: React.FC<MediaProps> = (props) => {
   const { onClick, resource, videoClassName } = props
@@ -16,14 +15,14 @@ export const VideoMedia: React.FC<MediaProps> = (props) => {
   useEffect(() => {
     const { current: video } = videoRef
     if (video) {
-      video.addEventListener('suspend', () => {
+      video.addEventListener("suspend", () => {
         // setShowFallback(true);
         // console.warn('Video was suspended, rendering fallback image.')
       })
     }
   }, [])
 
-  if (resource && typeof resource === 'object') {
+  if (resource && typeof resource === "object") {
     const { filename } = resource
 
     return (

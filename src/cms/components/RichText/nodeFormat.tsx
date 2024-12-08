@@ -1,11 +1,13 @@
-// @ts-nocheck
 //This copy-and-pasted from lexical here: https://github.com/facebook/lexical/blob/c2ceee223f46543d12c574e62155e619f9a18a5d/packages/lexical/src/LexicalConstants.ts
 
-import type { ElementFormatType, TextFormatType } from '@payloadcms/richtext-lexical/lexical'
 import type {
-  TextDetailType,
+  ElementFormatType,
+  TextFormatType,
   TextModeType,
-} from '@payloadcms/richtext-lexical/lexical/nodes/LexicalTextNode'
+} from "@payloadcms/richtext-lexical/lexical"
+
+
+type TextDetailType = "directionless" | "unmergeable";
 
 /**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -63,23 +65,23 @@ export const IS_ALIGN_START = 5
 export const IS_ALIGN_END = 6
 
 // Reconciliation
-export const NON_BREAKING_SPACE = '\u00A0'
-const ZERO_WIDTH_SPACE = '\u200b'
+export const NON_BREAKING_SPACE = "\u00A0"
+const ZERO_WIDTH_SPACE = "\u200b"
 
-export const DOUBLE_LINE_BREAK = '\n\n'
+export const DOUBLE_LINE_BREAK = "\n\n"
 
 // For FF, we need to use a non-breaking space, or it gets composition
 // in a stuck state.
 
-const RTL = '\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC'
+const RTL = "\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC"
 const LTR =
-  'A-Za-z\u00C0-\u00D6\u00D8-\u00F6' +
-  '\u00F8-\u02B8\u0300-\u0590\u0800-\u1FFF\u200E\u2C00-\uFB1C' +
-  '\uFE00-\uFE6F\uFEFD-\uFFFF'
+  "A-Za-z\u00C0-\u00D6\u00D8-\u00F6" +
+  "\u00F8-\u02B8\u0300-\u0590\u0800-\u1FFF\u200E\u2C00-\uFB1C" +
+  "\uFE00-\uFE6F\uFEFD-\uFFFF"
 
-export const RTL_REGEX = new RegExp('^[^' + LTR + ']*[' + RTL + ']')
+export const RTL_REGEX = new RegExp("^[^" + LTR + "]*[" + RTL + "]")
 
-export const LTR_REGEX = new RegExp('^[^' + RTL + ']*[' + LTR + ']')
+export const LTR_REGEX = new RegExp("^[^" + RTL + "]*[" + LTR + "]")
 
 export const TEXT_TYPE_TO_FORMAT: Record<TextFormatType | string, number> = {
   bold: IS_BOLD,
@@ -97,7 +99,10 @@ export const DETAIL_TYPE_TO_DETAIL: Record<TextDetailType | string, number> = {
   unmergeable: IS_UNMERGEABLE,
 }
 
-export const ELEMENT_TYPE_TO_FORMAT: Record<Exclude<ElementFormatType, ''>, number> = {
+export const ELEMENT_TYPE_TO_FORMAT: Record<
+  Exclude<ElementFormatType, "">,
+  number
+> = {
   center: IS_ALIGN_CENTER,
   end: IS_ALIGN_END,
   justify: IS_ALIGN_JUSTIFY,
@@ -107,12 +112,12 @@ export const ELEMENT_TYPE_TO_FORMAT: Record<Exclude<ElementFormatType, ''>, numb
 }
 
 export const ELEMENT_FORMAT_TO_TYPE: Record<number, ElementFormatType> = {
-  [IS_ALIGN_CENTER]: 'center',
-  [IS_ALIGN_END]: 'end',
-  [IS_ALIGN_JUSTIFY]: 'justify',
-  [IS_ALIGN_LEFT]: 'left',
-  [IS_ALIGN_RIGHT]: 'right',
-  [IS_ALIGN_START]: 'start',
+  [IS_ALIGN_CENTER]: "center",
+  [IS_ALIGN_END]: "end",
+  [IS_ALIGN_JUSTIFY]: "justify",
+  [IS_ALIGN_LEFT]: "left",
+  [IS_ALIGN_RIGHT]: "right",
+  [IS_ALIGN_START]: "start",
 }
 
 export const TEXT_MODE_TO_TYPE: Record<TextModeType, 0 | 1 | 2> = {
@@ -122,7 +127,7 @@ export const TEXT_MODE_TO_TYPE: Record<TextModeType, 0 | 1 | 2> = {
 }
 
 export const TEXT_TYPE_TO_MODE: Record<number, TextModeType> = {
-  [IS_NORMAL]: 'normal',
-  [IS_SEGMENTED]: 'segmented',
-  [IS_TOKEN]: 'token',
+  [IS_NORMAL]: "normal",
+  [IS_SEGMENTED]: "segmented",
+  [IS_TOKEN]: "token",
 }

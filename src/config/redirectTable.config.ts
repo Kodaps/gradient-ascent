@@ -1,3 +1,1 @@
-export const redirects: { [key: string]: string } = {
-
-};
+export const redirects: { [key: string]: string } = {}

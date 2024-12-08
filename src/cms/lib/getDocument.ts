@@ -1,10 +1,9 @@
-import type { Config } from '@payload-types'
+import { unstable_cache } from "next/cache"
+import configPromise from "@payload-config"
+import type { Config } from "@payload-types"
+import { getPayload } from "payload"
 
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-import { unstable_cache } from 'next/cache'
-
-type Collection = keyof Config['collections']
+type Collection = keyof Config["collections"]
 
 async function getDocument(collection: Collection, slug: string, depth = 0) {
   const payload = await getPayload({ config: configPromise })
@@ -26,6 +25,10 @@ async function getDocument(collection: Collection, slug: string, depth = 0) {
  * Returns a unstable_cache function mapped with the cache tag for the slug
  */
 export const getCachedDocument = (collection: Collection, slug: string) =>
-  unstable_cache(async () => getDocument(collection, slug), [collection, slug], {
-    tags: [`${collection}_${slug}`],
-  })
+  unstable_cache(
+    async () => getDocument(collection, slug),
+    [collection, slug],
+    {
+      tags: [`${collection}_${slug}`],
+    }
+  )

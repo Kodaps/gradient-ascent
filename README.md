@@ -1,11 +1,7 @@
-
 # What is Gradient Ascent
 
 This is a fork of the [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 It is a starter template that I use as a basic for my personnal website, and it aims to show how to implement some features that I find useful.
-
-
-
 
 ## Roadmap
 
@@ -52,14 +48,16 @@ It is a starter template that I use as a basic for my personnal website, and it 
 - [ ] Authentication (AuthJS)
 - [ ] E-commerce
 
-
-
 https://github.com/payloadcms/payload/blob/main/templates/with-vercel-website
 
 https://ouassim.tech/notes/setting-up-a-nextjs-project-with-essential-best-practices/
 
-Use Just ?? 
+https://next-intl-docs.vercel.app/docs/routing
 
+
+https://next-intl-docs.vercel.app/docs/routing/middleware#example-auth-js
+
+Use Just ??
 
 ## Getting Started
 

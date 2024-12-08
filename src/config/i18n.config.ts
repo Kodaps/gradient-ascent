@@ -1,12 +1,13 @@
-
 export const i18n = {
-  defaultLocale: 'en',
-  locales: ['en', 'fr'],
-  defaultNS: 'common'
+  defaultLocale: "en",
+  locales: ["en", "fr"],
+  defaultNS: "common",
 } as const
 
-
-export function getOptions (lng: string = i18n.defaultLocale, ns: string = i18n.defaultNS) {
+export function getOptions(
+  lng: string = i18n.defaultLocale,
+  ns: string = i18n.defaultNS
+) {
   return {
     // debug: true,
     supportedLngs: i18n.locales,
@@ -14,8 +15,8 @@ export function getOptions (lng: string = i18n.defaultLocale, ns: string = i18n.
     lng,
     fallbackNS: i18n.defaultNS,
     defaultNS: i18n.defaultNS,
-    ns
+    ns,
   }
 }
 
-export type Locale = typeof i18n['locales'][number];
+export type Locale = (typeof i18n)["locales"][number]

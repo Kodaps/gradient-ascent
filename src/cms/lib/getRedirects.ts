@@ -1,13 +1,12 @@
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
-
-import { cache } from '@cms/lib/cache'
+import { cache } from "@cms/lib/cache"
+import configPromise from "@payload-config"
+import { getPayload } from "payload"
 
 export async function getRedirects(depth = 1) {
   const payload = await getPayload({ config: configPromise })
 
   const { docs: redirects } = await payload.find({
-    collection: 'redirects',
+    collection: "redirects",
     depth,
     limit: 0,
     pagination: false,
@@ -22,6 +21,6 @@ export async function getRedirects(depth = 1) {
  * Cache all redirects together to avoid multiple fetches.
  */
 export const getCachedRedirects = () =>
-  cache(async () => getRedirects(), ['redirects'], {
-    tags: ['redirects'],
+  cache(async () => getRedirects(), ["redirects"], {
+    tags: ["redirects"],
   })

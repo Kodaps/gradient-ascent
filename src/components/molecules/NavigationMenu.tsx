@@ -1,48 +1,42 @@
-// "use client"
-
 import * as React from "react"
-import Link from "next/link"
 
+import { Lang, routeToHref } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
-import { Icon } from "@/components/atoms/Icon"
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { isFeatureActive } from "@/lib/features"
-import { Dict, Lang, routeToHref, useTranslation,  } from "@/lib/i18n"
-import { IconBrain } from "@tabler/icons-react"
-
+} from "@components/ui/navigation-menu"
+import { getTranslations } from "@/lib/i18n/getTranslations"
+import Link from "next/link"
 
 interface NavigationMenuProps {
   className?: string
-  blogLinks: { label: string; href: string, description?: string }[], 
+  blogLinks: { label: string; href: string; description?: string }[]
   lang: Lang
 }
 
-export const FullNavigationMenu= async ({className, blogLinks, lang}: NavigationMenuProps) => {
-
-  const {t} = await useTranslation(lang);
+export const FullNavigationMenu = async ({
+  lang,
+}: NavigationMenuProps) => {
+  const t = await getTranslations(lang)
 
   return (
     <NavigationMenu>
       <NavigationMenuList>
-      <NavigationMenuItem>
-          <Link href={routeToHref(["/blog"], lang)}  legacyBehavior passHref>
+        <NavigationMenuItem>
+          <Link href={routeToHref(["/blog"], lang)} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            {t('menu.blog')}
+              {t("menu.blog")}
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href={routeToHref(["/about"], lang)}  legacyBehavior passHref>
+          <Link href={routeToHref(["/about"], lang)} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            {t('menu.about')}
+              {t("menu.about")}
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

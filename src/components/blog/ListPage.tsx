@@ -1,18 +1,15 @@
+import { Lang } from "@/lib/i18n"
+import { Post } from "contentlayer/generated"
 
-import { Lang } from "@/utils/i18n";
-
-import { List } from "./List";
-import { Post } from "contentlayer/generated";
-
-
+import { List } from "./List"
 
 interface ListPageProps {
-  title: string;
-  posts:Array<Post>;
-  lang: Lang;
+  title: string
+  posts: Array<Post>
+  lang: Lang
 }
 
-export const ListPage:React.FC<ListPageProps> = ({title, posts, lang}) => {
+export const ListPage: React.FC<ListPageProps> = ({ title, posts, lang }) => {
   return (
     <section className="mx-auto max-w-5xl px-6 py-12 sm:px-6 sm:py-16 lg:py-20">
       <header>
@@ -21,8 +18,8 @@ export const ListPage:React.FC<ListPageProps> = ({title, posts, lang}) => {
         </h1>
       </header>
       <div className="p-4 md:p-0">
-        <List lang={lang}  posts={posts}/>
+        <List lang={lang} posts={posts} />
       </div>
     </section>
-  );
+  )
 }

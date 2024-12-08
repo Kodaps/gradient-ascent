@@ -1,13 +1,11 @@
-import { cn } from '@cms/lib/cn'
-import React, { Fragment } from 'react'
-
-import type { Page } from '@payload-types'
-
-import { ArchiveBlock } from '@cms/blocks/ArchiveBlock/Component'
-import { CallToActionBlock } from '@cms/blocks/CallToAction/Component'
-import { ContentBlock } from '@cms/blocks/Content/Component'
-import { FormBlock } from '@cms/blocks/Form/Component'
-import { MediaBlock } from '@cms/blocks/MediaBlock/Component'
+import React, { Fragment } from "react"
+import { ArchiveBlock } from "@cms/blocks/ArchiveBlock/Component"
+import { CallToActionBlock } from "@cms/blocks/CallToAction/Component"
+import { ContentBlock } from "@cms/blocks/Content/Component"
+import { FormBlock } from "@cms/blocks/Form/Component"
+import { MediaBlock } from "@cms/blocks/MediaBlock/Component"
+import { cn } from "@cms/lib/cn"
+import type { Page } from "@payload-types"
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,7 +16,7 @@ const blockComponents = {
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: Page["layout"][0][]
 }> = (props) => {
   const { blocks } = props
 

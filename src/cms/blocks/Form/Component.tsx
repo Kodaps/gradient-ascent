@@ -1,15 +1,16 @@
-'use client'
-import type { Form as FormType } from '@payloadcms/plugin-form-builder/types'
+"use client"
 
-import { useRouter } from 'next/navigation'
-import React, { useCallback, useState } from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
-import RichText from '@cms/components/RichText'
-import { Button } from '@/components/ui/button'
+import React, { useCallback, useState } from "react"
+import { useRouter } from "next/navigation"
+import RichText from "@cms/components/RichText"
+import { getClientSideURL } from "@cms/lib/getUrl"
+import type { Form as FormType } from "@payloadcms/plugin-form-builder/types"
+import { FormProvider, useForm } from "react-hook-form"
 
-import { buildInitialFormState } from './buildInitialFormState'
-import { fields } from './fields'
-import { getClientSideURL } from '@cms/lib/getUrl'
+import { Button } from "@/components/ui/button"
+
+import { buildInitialFormState } from "./buildInitialFormState"
+import { fields } from "./fields"
 
 export type Value = unknown
 
@@ -23,7 +24,7 @@ export interface Data {
 
 export type FormBlockType = {
   blockName?: string
-  blockType?: 'formBlock'
+  blockType?: "formBlock"
   enableIntro: boolean
   form: FormType
   introContent?: {
@@ -39,7 +40,13 @@ export const FormBlock: React.FC<
   const {
     enableIntro,
     form: formFromProps,
-    form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
+    form: {
+      id: formID,
+      confirmationMessage,
+      confirmationType,
+      redirect,
+      submitButtonLabel,
+    } = {},
     introContent,
   } = props
 
@@ -55,7 +62,9 @@ export const FormBlock: React.FC<
 
   const [isLoading, setIsLoading] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState<boolean>()
-  const [error, setError] = useState<{ message: string; status?: string } | undefined>()
+  const [error, setError] = useState<
+    { message: string; status?: string } | undefined
+  >()
   const router = useRouter()
 
   const onSubmit = useCallback(
@@ -75,16 +84,19 @@ export const FormBlock: React.FC<
         }, 1000)
 
         try {
-          const req = await fetch(`${getClientSideURL()}/api/form-submissions`, {
-            body: JSON.stringify({
-              form: formID,
-              submissionData: dataToSend,
-            }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            method: 'POST',
-          })
+          const req = await fetch(
+            `${getClientSideURL()}/api/form-submissions`,
+            {
+              body: JSON.stringify({
+                form: formID,
+                submissionData: dataToSend,
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+              method: "POST",
+            }
+          )
 
           const res = await req.json()
 
@@ -94,7 +106,7 @@ export const FormBlock: React.FC<
             setIsLoading(false)
 
             setError({
-              message: res.errors?.[0]?.message || 'Internal Server Error',
+              message: res.errors?.[0]?.message || "Internal Server Error",
               status: res.status,
             })
 
@@ -104,7 +116,7 @@ export const FormBlock: React.FC<
           setIsLoading(false)
           setHasSubmitted(true)
 
-          if (confirmationType === 'redirect' && redirect) {
+          if (confirmationType === "redirect" && redirect) {
             const { url } = redirect
 
             const redirectUrl = url
@@ -115,28 +127,34 @@ export const FormBlock: React.FC<
           console.warn(err)
           setIsLoading(false)
           setError({
-            message: 'Something went wrong.',
+            message: "Something went wrong.",
           })
         }
       }
 
       void submitForm()
     },
-    [router, formID, redirect, confirmationType],
+    [router, formID, redirect, confirmationType]
   )
 
   return (
     <div className="container lg:max-w-[48rem]">
       {enableIntro && introContent && !hasSubmitted && (
-        <RichText className="mb-8 lg:mb-12" content={introContent} enableGutter={false} />
+        <RichText
+          className="mb-8 lg:mb-12"
+          content={introContent}
+          enableGutter={false}
+        />
       )}
       <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
         <FormProvider {...formMethods}>
-          {!isLoading && hasSubmitted && confirmationType === 'message' && (
+          {!isLoading && hasSubmitted && confirmationType === "message" && (
             <RichText content={confirmationMessage} />
           )}
           {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-          {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+          {error && (
+            <div>{`${error.status || "500"}: ${error.message || ""}`}</div>
+          )}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-4 last:mb-0">

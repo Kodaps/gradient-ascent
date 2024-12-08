@@ -1,6 +1,10 @@
-import { BeforeSync, DocToSync } from '@payloadcms/plugin-search/types'
+import { BeforeSync, DocToSync } from "@payloadcms/plugin-search/types"
 
-export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc, payload }) => {
+export const beforeSyncWithSearch: BeforeSync = async ({
+  originalDoc,
+  searchDoc,
+  payload,
+}) => {
   const {
     doc: { relationTo: collection },
   } = searchDoc
@@ -26,7 +30,7 @@ export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc,
         const { id, title } = category
 
         return {
-          relationTo: 'categories',
+          relationTo: "categories",
           id,
           title,
         }
@@ -35,7 +39,7 @@ export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc,
       modifiedDoc.categories = mappedCategories
     } catch (err) {
       console.error(
-        `Failed. Category not found when syncing collection '${collection}' with id: '${id}' to search.`,
+        `Failed. Category not found when syncing collection '${collection}' with id: '${id}' to search.`
       )
     }
   }

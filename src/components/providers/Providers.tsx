@@ -1,26 +1,27 @@
-'use client';
+"use client"
 
-import { ThemeProvider } from 'next-themes';
-import { SessionProvider } from "next-auth/react";
-import AltLinkProvider from '../altlinks/AltLinkProvider';
-import { Session } from 'next-auth';
+import { Session } from "next-auth"
+import { SessionProvider } from "next-auth/react"
+import { ThemeProvider } from "next-themes"
 
-
+import AltLinkProvider from "../altlinks/AltLinkProvider"
 
 export interface ProvidersProps {
-  children: React.ReactNode,
-  session: Session|null
+  children: React.ReactNode
+  session: Session | null
 }
 
-const Providers = ({ children, session}: ProvidersProps) => (
-
-  <ThemeProvider attribute="class" defaultTheme='system' enableSystem disableTransitionOnChange>
+const Providers = ({ children, session }: ProvidersProps) => (
+  <ThemeProvider
+    attribute="class"
+    defaultTheme="system"
+    enableSystem
+    disableTransitionOnChange
+  >
     <AltLinkProvider>
-      <SessionProvider session={session}>
-      {children}
-      </SessionProvider>
+      <SessionProvider session={session}>{children}</SessionProvider>
     </AltLinkProvider>
   </ThemeProvider>
-);
+)
 
-export default Providers;
+export default Providers

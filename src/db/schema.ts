@@ -1,23 +1,16 @@
-import { eq } from 'drizzle-orm';
-// import { getXataClient } from './xata_old'; // Generated client
-
 
 import {
   boolean,
-  timestamp,
-  pgTable,
-  text,
-  primaryKey,
   integer,
+  pgTable,
+  primaryKey,
+  text,
+  timestamp,
 } from "drizzle-orm/pg-core"
-
 import { drizzle } from "drizzle-orm/postgres-js"
 import type { AdapterAccountType } from "next-auth/adapters"
 
 // const connectionString = "postgres://postgres:postgres@localhost:5432/drizzle"
-
-
-
 
 export const users = pgTable("user", {
   id: text("id")
@@ -28,7 +21,7 @@ export const users = pgTable("user", {
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
 })
- 
+
 export const accounts = pgTable(
   "account",
   {
@@ -52,7 +45,7 @@ export const accounts = pgTable(
     }),
   })
 )
- 
+
 export const sessions = pgTable("session", {
   sessionToken: text("sessionToken").primaryKey(),
   userId: text("userId")
@@ -60,7 +53,7 @@ export const sessions = pgTable("session", {
     .references(() => users.id, { onDelete: "cascade" }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
 })
- 
+
 export const verificationTokens = pgTable(
   "verificationToken",
   {
@@ -74,7 +67,7 @@ export const verificationTokens = pgTable(
     }),
   })
 )
- 
+
 export const authenticators = pgTable(
   "authenticator",
   {

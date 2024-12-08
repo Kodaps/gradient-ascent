@@ -1,13 +1,9 @@
+import { CMSLink } from "@cms/components/Link"
+import { Media } from "@cms/components/Media"
+import RichText from "@cms/components/RichText"
+import type { Page } from "@payload-types"
 
-
-import type { Page } from '@payload-types'
-
-import { CMSLink } from '@cms/components/Link'
-import { Media } from '@cms/components/Media'
-import RichText from '@cms/components/RichText'
-
-export const HighImpactHero = ({ links, media, richText }: Page['hero']) => {
-
+export const HighImpactHero = ({ links, media, richText }: Page["hero"]) => {
   return (
     <div
       className="relative -mt-[10.4rem] flex items-center justify-center text-white"
@@ -15,7 +11,13 @@ export const HighImpactHero = ({ links, media, richText }: Page['hero']) => {
     >
       <div className="container mb-8 z-10 relative flex items-center justify-center">
         <div className="max-w-[36.5rem] text-center">
-          {richText && <RichText className="mb-6" content={richText} enableGutter={false} />}
+          {richText && (
+            <RichText
+              className="mb-6"
+              content={richText}
+              enableGutter={false}
+            />
+          )}
           {Array.isArray(links) && links.length > 0 && (
             <ul className="flex justify-center gap-4">
               {links.map(({ link }, i) => {
@@ -30,7 +32,7 @@ export const HighImpactHero = ({ links, media, richText }: Page['hero']) => {
         </div>
       </div>
       <div className="min-h-[80vh] select-none">
-        {media && typeof media === 'object' && (
+        {media && typeof media === "object" && (
           <Media
             fill
             imgClassName="-z-10 object-cover"

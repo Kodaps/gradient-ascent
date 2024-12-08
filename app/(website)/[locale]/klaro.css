@@ -90,16 +90,40 @@ to create a white background.
   background-color: #1a936f;
   background-color: var(--green1, #1a936f);
 }
-.klaro .cookie-modal .cm-list-input.half-checked:checked + .cm-list-label .slider,
-.klaro .context-notice .cm-list-input.half-checked:checked + .cm-list-label .slider,
-.klaro .cookie-notice .cm-list-input.half-checked:checked + .cm-list-label .slider {
+.klaro
+  .cookie-modal
+  .cm-list-input.half-checked:checked
+  + .cm-list-label
+  .slider,
+.klaro
+  .context-notice
+  .cm-list-input.half-checked:checked
+  + .cm-list-label
+  .slider,
+.klaro
+  .cookie-notice
+  .cm-list-input.half-checked:checked
+  + .cm-list-label
+  .slider {
   background-color: #1a936f;
   background-color: var(--green1, #1a936f);
   opacity: 0.6;
 }
-.klaro .cookie-modal .cm-list-input.half-checked:checked + .cm-list-label .slider::before,
-.klaro .context-notice .cm-list-input.half-checked:checked + .cm-list-label .slider::before,
-.klaro .cookie-notice .cm-list-input.half-checked:checked + .cm-list-label .slider::before {
+.klaro
+  .cookie-modal
+  .cm-list-input.half-checked:checked
+  + .cm-list-label
+  .slider::before,
+.klaro
+  .context-notice
+  .cm-list-input.half-checked:checked
+  + .cm-list-label
+  .slider::before,
+.klaro
+  .cookie-notice
+  .cm-list-input.half-checked:checked
+  + .cm-list-label
+  .slider::before {
   -ms-transform: translateX(10px);
   transform: translateX(10px);
 }
@@ -110,9 +134,21 @@ to create a white background.
   background-color: var(--green2, #24cc9a);
   opacity: 0.8;
 }
-.klaro .cookie-modal .cm-list-input.only-required + .cm-list-label .slider::before,
-.klaro .context-notice .cm-list-input.only-required + .cm-list-label .slider::before,
-.klaro .cookie-notice .cm-list-input.only-required + .cm-list-label .slider::before {
+.klaro
+  .cookie-modal
+  .cm-list-input.only-required
+  + .cm-list-label
+  .slider::before,
+.klaro
+  .context-notice
+  .cm-list-input.only-required
+  + .cm-list-label
+  .slider::before,
+.klaro
+  .cookie-notice
+  .cm-list-input.only-required
+  + .cm-list-label
+  .slider::before {
   -ms-transform: translateX(10px);
   transform: translateX(10px);
 }
@@ -127,7 +163,9 @@ to create a white background.
 .klaro .cookie-modal .slider,
 .klaro .context-notice .slider,
 .klaro .cookie-notice .slider {
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 6px 0 rgba(0, 0, 0, 0.2),
+    5px 5px 10px 0 rgba(0, 0, 0, 0.19);
 }
 .klaro .cookie-modal .cm-list-input,
 .klaro .context-notice .cm-list-input,
@@ -219,7 +257,9 @@ to create a white background.
 .klaro .cookie-modal .cm-list-input:focus + .cm-list-label .slider,
 .klaro .context-notice .cm-list-input:focus + .cm-list-label .slider,
 .klaro .cookie-notice .cm-list-input:focus + .cm-list-label .slider {
-  box-shadow: 0 4px 6px 0 rgba(125, 125, 125, 0.2), 5px 5px 10px 0 rgba(125, 125, 125, 0.19);
+  box-shadow:
+    0 4px 6px 0 rgba(125, 125, 125, 0.2),
+    5px 5px 10px 0 rgba(125, 125, 125, 0.19);
 }
 .klaro .cookie-modal .cm-list-input:checked + .cm-list-label .slider::before,
 .klaro .context-notice .cm-list-input:checked + .cm-list-label .slider::before,
@@ -230,7 +270,9 @@ to create a white background.
 .klaro .cookie-modal .slider,
 .klaro .context-notice .slider,
 .klaro .cookie-notice .slider {
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 6px 0 rgba(0, 0, 0, 0.2),
+    5px 5px 10px 0 rgba(0, 0, 0, 0.19);
 }
 .klaro .cookie-modal a,
 .klaro .context-notice a,
@@ -426,7 +468,7 @@ to create a white background.
 .klaro .cookie-modal.cm-embedded .cm-modal.cm-klaro {
   position: relative;
   -ms-transform: none;
-      transform: none;
+  transform: none;
 }
 .klaro .cookie-modal .cm-bg {
   background: rgba(0, 0, 0, 0.5);
@@ -442,12 +484,14 @@ to create a white background.
   color: #fafafa;
   color: var(--light1, #fafafa);
   z-index: 1001;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 6px 0 rgba(0, 0, 0, 0.2),
+    5px 5px 10px 0 rgba(0, 0, 0, 0.19);
   width: 100%;
   max-height: 98%;
   top: 50%;
   -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+  transform: translateY(-50%);
   position: fixed;
   overflow: auto;
 }
@@ -532,18 +576,60 @@ to create a white background.
   padding: 0;
   margin: 0;
 }
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose .cm-services .cm-caret,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose .cm-services .cm-caret {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose
+  .cm-services
+  .cm-caret,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose
+  .cm-services
+  .cm-caret {
   color: #a0a0a0;
   color: var(--light3, #a0a0a0);
 }
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose .cm-services .cm-content,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose .cm-services .cm-content {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose
+  .cm-services
+  .cm-content,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose
+  .cm-services
+  .cm-content {
   margin-left: -40px;
   display: none;
 }
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose .cm-services .cm-content.expanded,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose .cm-services .cm-content.expanded {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose
+  .cm-services
+  .cm-content.expanded,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose
+  .cm-services
+  .cm-content.expanded {
   margin-top: 10px;
   display: block;
 }
@@ -557,10 +643,30 @@ to create a white background.
   padding-left: 60px;
   min-height: 40px;
 }
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service:first-child,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose:first-child,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service:first-child,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose:first-child {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-service:first-child,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose:first-child,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-service:first-child,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose:first-child {
   margin-top: 0;
 }
 .klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service p,
@@ -572,15 +678,41 @@ to create a white background.
 .klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service p.purposes,
 .klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose p.purposes,
 .klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service p.purposes,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose p.purposes {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose
+  p.purposes {
   color: #a0a0a0;
   color: var(--light3, #a0a0a0);
   font-size: 0.8em;
 }
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service.cm-toggle-all,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose.cm-toggle-all,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service.cm-toggle-all,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose.cm-toggle-all {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-service.cm-toggle-all,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose.cm-toggle-all,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-service.cm-toggle-all,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose.cm-toggle-all {
   border-top-width: 1px;
   border-top-width: var(--border-width, 1px);
   border-top-style: solid;
@@ -589,20 +721,92 @@ to create a white background.
   border-top-color: var(--dark2, #5c5c5c);
   padding-top: 1em;
 }
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service span.cm-list-title,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose span.cm-list-title,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service span.cm-list-title,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose span.cm-list-title {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-service
+  span.cm-list-title,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose
+  span.cm-list-title,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-service
+  span.cm-list-title,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose
+  span.cm-list-title {
   font-weight: 600;
 }
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service span.cm-opt-out,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-service span.cm-required,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose span.cm-opt-out,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-services li.cm-purpose span.cm-required,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service span.cm-opt-out,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service span.cm-required,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose span.cm-opt-out,
-.klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose span.cm-required {
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-service
+  span.cm-opt-out,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-service
+  span.cm-required,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose
+  span.cm-opt-out,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-services
+  li.cm-purpose
+  span.cm-required,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-service
+  span.cm-opt-out,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-service
+  span.cm-required,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose
+  span.cm-opt-out,
+.klaro
+  .cookie-modal
+  .cm-modal
+  .cm-body
+  ul.cm-purposes
+  li.cm-purpose
+  span.cm-required {
   color: #5c5c5c;
   color: var(--dark2, #5c5c5c);
   padding-left: 0.2em;
@@ -633,7 +837,9 @@ to create a white background.
     top: var(--notice-top, auto);
     max-width: 400px;
     max-width: var(--notice-max-width, 400px);
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
+    box-shadow:
+      0 4px 6px 0 rgba(0, 0, 0, 0.2),
+      5px 5px 10px 0 rgba(0, 0, 0, 0.19);
   }
 }
 @media (max-width: 1023px) {
@@ -680,11 +886,19 @@ to create a white background.
     width: 100%;
   }
 }
-.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons button.cm-btn {
+.klaro
+  .cookie-notice:not(.cookie-modal-notice)
+  .cn-body
+  .cn-buttons
+  button.cm-btn {
   margin-top: 0.5em;
 }
 @media (max-width: 384px) {
-  .klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-buttons button.cm-btn {
+  .klaro
+    .cookie-notice:not(.cookie-modal-notice)
+    .cn-body
+    .cn-buttons
+    button.cm-btn {
     width: calc(50% - 0.5em);
   }
 }
@@ -706,12 +920,14 @@ to create a white background.
   color: #fafafa;
   color: var(--light1, #fafafa);
   z-index: 1001;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 6px 0 rgba(0, 0, 0, 0.2),
+    5px 5px 10px 0 rgba(0, 0, 0, 0.19);
   width: 100%;
   max-height: 98%;
   top: 50%;
   -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+  transform: translateY(-50%);
   position: fixed;
   overflow: auto;
   padding: 1em;

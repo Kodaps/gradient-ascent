@@ -1,8 +1,9 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { X } from 'lucide-react'
-import { Button } from "@/components/ui/button"
+import { useState } from "react"
+import { X } from "lucide-react"
+
+import { Button } from "@components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -10,59 +11,70 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+} from "@components/ui/dialog"
+import { Label } from "@components/ui/label"
+import { Switch } from "@components/ui/switch"
 
 interface CookieCategory {
-  id: string;
-  name: string;
-  description: string;
-  required?: boolean;
+  id: string
+  name: string
+  description: string
+  required?: boolean
 }
 
 const cookieCategories: CookieCategory[] = [
   {
-    id: 'necessary',
-    name: 'Necessary',
-    description: 'These cookies are essential for the website to function properly.',
+    id: "necessary",
+    name: "Necessary",
+    description:
+      "These cookies are essential for the website to function properly.",
     required: true,
   },
   {
-    id: 'functional',
-    name: 'Functional',
-    description: 'These cookies enable personalized features and functionality.',
+    id: "functional",
+    name: "Functional",
+    description:
+      "These cookies enable personalized features and functionality.",
   },
   {
-    id: 'analytics',
-    name: 'Analytics',
-    description: 'These cookies help us understand how visitors interact with the website.',
+    id: "analytics",
+    name: "Analytics",
+    description:
+      "These cookies help us understand how visitors interact with the website.",
   },
   {
-    id: 'marketing',
-    name: 'Marketing',
-    description: 'These cookies are used to deliver relevant ads and marketing campaigns.',
+    id: "marketing",
+    name: "Marketing",
+    description:
+      "These cookies are used to deliver relevant ads and marketing campaigns.",
   },
 ]
 
 interface CookiePreferencesModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onSave: (preferences: Record<string, boolean>) => void;
+  isOpen: boolean
+  onClose: () => void
+  onSave: (preferences: Record<string, boolean>) => void
 }
 
-export default function CookiePreferencesModal({ isOpen, onClose, onSave }: CookiePreferencesModalProps) {
-  const [preferences, setPreferences] = useState<Record<string, boolean>>(() => 
-    cookieCategories.reduce((acc, category) => ({
-      ...acc,
-      [category.id]: category.required || false
-    }), {})
+export default function CookiePreferencesModal({
+  isOpen,
+  onClose,
+  onSave,
+}: CookiePreferencesModalProps) {
+  const [preferences, setPreferences] = useState<Record<string, boolean>>(() =>
+    cookieCategories.reduce(
+      (acc, category) => ({
+        ...acc,
+        [category.id]: category.required || false,
+      }),
+      {}
+    )
   )
 
   const handleToggle = (categoryId: string) => {
-    setPreferences(prev => ({
+    setPreferences((prev) => ({
       ...prev,
-      [categoryId]: !prev[categoryId]
+      [categoryId]: !prev[categoryId],
     }))
   }
 
@@ -72,21 +84,24 @@ export default function CookiePreferencesModal({ isOpen, onClose, onSave }: Cook
   }
 
   const handleAcceptAll = () => {
-    const allAccepted = cookieCategories.reduce((acc, category) => ({
-      ...acc,
-      [category.id]: true
-    }), {})
+    const allAccepted = cookieCategories.reduce(
+      (acc, category) => ({
+        ...acc,
+        [category.id]: true,
+      }),
+      {}
+    )
     onSave(allAccepted)
     onClose()
   }
 
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+  return (<Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>Cookie Preferences</DialogTitle>
           <DialogDescription>
-            Manage your cookie preferences. Required cookies cannot be disabled as they are essential for the website to function properly.
+            Manage your cookie preferences. Required cookies cannot be disabled
+            as they are essential for the website to function properly.
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">
@@ -102,7 +117,9 @@ export default function CookiePreferencesModal({ isOpen, onClose, onSave }: Cook
                 <Label htmlFor={category.id} className="font-medium">
                   {category.name}
                 </Label>
-                <p className="text-sm text-muted-foreground">{category.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {category.description}
+                </p>
               </div>
             </div>
           ))}

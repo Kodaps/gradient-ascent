@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,21 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "contentlayer/generated": [
-        ".contentlayer/generated"
-      ],
-      "@payload-config": [
-        "src/config/payload.config.ts"
-      ],
-      "@payload-types": [
-        "src/config/payload-types.ts"
-      ],
-      "@cms/*": [
-        "src/cms/*"
-      ]
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "contentlayer/generated": [".contentlayer/generated"],
+      "@payload-config": ["src/config/payload.config.ts"],
+      "@payload-types": ["src/config/payload-types.ts"],
+      "@cms/*": ["src/cms/*"]
     },
     "target": "ES2017"
   },
@@ -47,8 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/config/site.config.mjs",
-    "src/db/db"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "src/db/db"
+  ],
+  "exclude": ["node_modules"]
 }

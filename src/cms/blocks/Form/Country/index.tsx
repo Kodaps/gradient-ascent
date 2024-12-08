@@ -1,20 +1,20 @@
-import type { CountryField } from '@payloadcms/plugin-form-builder/types'
-import type { Control, FieldErrorsImpl, FieldValues } from 'react-hook-form'
+import React from "react"
+import type { CountryField } from "@payloadcms/plugin-form-builder/types"
+import type { Control, FieldErrorsImpl, FieldValues } from "react-hook-form"
+import { Controller } from "react-hook-form"
 
-import { Label } from '@/components/ui/label'
+import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import React from 'react'
-import { Controller } from 'react-hook-form'
+} from "@/components/ui/select"
 
-import { Error } from '../Error'
-import { Width } from '../Width'
-import { countryOptions } from './options'
+import { Error } from "../Error"
+import { Width } from "../Width"
+import { countryOptions } from "./options"
 
 type PropType = CountryField & {
   control: Control<FieldValues, any>
@@ -25,7 +25,14 @@ type PropType = CountryField & {
   >
 }
 
-export function Country({ name, control, errors, label, required, width }: PropType) {
+export function Country({
+  name,
+  control,
+  errors,
+  label,
+  required,
+  width,
+}: PropType) {
   return (
     <Width width={width}>
       <Label className="" htmlFor={name}>
@@ -39,7 +46,10 @@ export function Country({ name, control, errors, label, required, width }: PropT
           const controlledValue = countryOptions.find((t) => t.value === value)
 
           return (
-            <Select onValueChange={(val) => onChange(val)} value={controlledValue?.value}>
+            <Select
+              onValueChange={(val) => onChange(val)}
+              value={controlledValue?.value}
+            >
               <SelectTrigger className="w-full" id={name}>
                 <SelectValue placeholder={label} />
               </SelectTrigger>

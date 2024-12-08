@@ -1,18 +1,17 @@
-
 interface DataProps {
-  data : {
-    [key:string]: any
+  data: {
+    [key: string]: any
   }
 }
 
 const StructuredData = ({ data }: DataProps) => {
   return (
-      <script
-        key="structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-      />
-  );
+    <script
+      key="structured-data"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
 }
 
-export default StructuredData;
+export default StructuredData

@@ -1,21 +1,27 @@
-import Providers from '@/components/providers/Providers';
-
-import { dir } from 'i18next'
-
 import { auth } from "auth"
-// import { getDictionary } from './dictionaries';
-import { Lang } from "@/lib/i18n";
+import { dir } from "i18next"
 
-import './klaro.css'
+// import { getDictionary } from './dictionaries';
+import { Lang } from "@/lib/i18n"
+import Providers from "@/components/providers/Providers"
+
+import "./klaro.css"
+
+import { Inter } from "next/font/google"
+//import Klaro from '@/components/widgets/KlaroConfig';
+import Script from "next/script"
+
+//import KlaroConfig from '@/components/widgets/KlaroConfig';
+import { i18n } from "@/config/i18n.config"
+import CookieConsentModal from "@/components/organisms/consent/CookieConsentModal"
 
 // import { authConfig } from 'auth.config';
 
 // import CookieBanner from '@/components/widgets/CookieBanner';
 // import GoogleAnalytics from '@/components/widgets/GoogleAnalytics';
 
-
 interface Params {
-  params : {
+  params: {
     slug: string
   }
 }
@@ -24,40 +30,39 @@ export async function generateStaticParams() {
   return i18n.locales.map((lng) => ({ lng }))
 }
 
-import { Inter } from 'next/font/google'
-//import Klaro from '@/components/widgets/KlaroConfig';
-import Script from 'next/script';
-//import KlaroConfig from '@/components/widgets/KlaroConfig';
-import { i18n } from '@/config/i18n.config';
-import CookieConsentModal from '@/components/organisms/consent/CookieConsentModal';
-
-
-const customFont = Inter({ subsets: ['latin'],  display:'swap',  variable: '--font-inter' });
-
-
+const customFont = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
 
 export interface LayoutProps {
-  children: React.ReactNode;
-  params : {
-    lang: Lang;
+  children: React.ReactNode
+  params: {
+    locale: Lang
   }
 }
 
-const  RootLayout = async ({ children, params }: LayoutProps) => {
+const RootLayout = async ({ children, params }: LayoutProps) => {
+  const { locale } = await params
+  const session = await auth()
 
-  const {lang} = await params;
-  const session = await auth();
-
+  /* html tag has suppressHydrationWarning directive as explained in https://github.com/pacocoursey/next-themes */
   return (
-    <html lang={ lang } dir={dir(lang)} className={`motion-safe:scroll-smooth ${customFont.variable} font-sans`}>
+    <html
+      lang={locale}
+      dir={dir(locale)}
+      className={`motion-safe:scroll-smooth ${customFont.variable} font-sans`}
+      suppressHydrationWarning
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      { /* <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ''}/> */ }
+      {/* <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ''}/> */}
 
       <body className="bg-white tracking-tight text-gray-900 antialiased dark:bg-zinc-900 dark:text-slate-300">
-        <CookieConsentModal/>
+        <CookieConsentModal />
         <Providers session={session}>
           <main>{children}</main>
         </Providers>
@@ -75,7 +80,7 @@ const  RootLayout = async ({ children, params }: LayoutProps) => {
           `}
             </Script>*/}
     </html>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout

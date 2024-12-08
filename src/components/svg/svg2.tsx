@@ -78,7 +78,7 @@ const SVG2 = () => {
         filter="url(#ffflux-filter)"
       ></rect>
     </svg>
-  );
-};
+  )
+}
 
-export default SVG2;
+export default SVG2

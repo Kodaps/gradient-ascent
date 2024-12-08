@@ -1,9 +1,9 @@
-import { createLocalReq, getPayload } from 'payload'
-import { seed } from '@cms/endpoints/seed'
-import config from '@payload-config'
-import { headers } from 'next/headers'
+import { headers } from "next/headers"
+import { seed } from "@cms/endpoints/seed"
+import config from "@payload-config"
+import { createLocalReq, getPayload } from "payload"
 
-const payloadToken = 'payload-token'
+const payloadToken = "payload-token"
 export const maxDuration = 60 // This function can run for a maximum of 60 seconds
 
 export async function POST(
@@ -13,7 +13,7 @@ export async function POST(
         value: string
       }
     }
-  },
+  }
 ): Promise<Response> {
   const payload = await getPayload({ config })
   const requestHeaders = await headers()
@@ -22,7 +22,7 @@ export async function POST(
   const { user } = await payload.auth({ headers: requestHeaders })
 
   if (!user) {
-    return new Response('Action forbidden.', { status: 403 })
+    return new Response("Action forbidden.", { status: 403 })
   }
 
   try {
@@ -34,6 +34,6 @@ export async function POST(
 
     return Response.json({ success: true })
   } catch {
-    return new Response('Error seeding data.')
+    return new Response("Error seeding data.")
   }
 }

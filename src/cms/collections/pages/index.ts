@@ -1,29 +1,28 @@
-import type { CollectionConfig } from 'payload'
-
-import { authenticated } from '@cms/access/authenticated'
-import { authenticatedOrPublished } from '@cms/access/authenticatedOrPublished'
-import { Archive } from '@cms/blocks/ArchiveBlock/config'
-import { CallToAction } from '@cms/blocks/CallToAction/config'
-import { Content } from '@cms/blocks/Content/config'
-import { FormBlock } from '@cms/blocks/Form/config'
-import { MediaBlock } from '@cms/blocks/MediaBlock/config'
-import { hero } from '@cms/heroes/config'
-import { slugField } from '@cms/fields/slug'
-import { populatePublishedAt } from '@cms/hooks/populatePublishedAt'
-import { generatePreviewPath } from '@cms/lib/generatePreviewPath'
-import { validate } from './hooks/validate'
-
+import { authenticated } from "@cms/access/authenticated"
+import { authenticatedOrPublished } from "@cms/access/authenticatedOrPublished"
+import { Archive } from "@cms/blocks/ArchiveBlock/config"
+import { CallToAction } from "@cms/blocks/CallToAction/config"
+import { Content } from "@cms/blocks/Content/config"
+import { FormBlock } from "@cms/blocks/Form/config"
+import { MediaBlock } from "@cms/blocks/MediaBlock/config"
+import { slugField } from "@cms/fields/slug"
+import { hero } from "@cms/heroes/config"
+import { populatePublishedAt } from "@cms/hooks/populatePublishedAt"
+import { generatePreviewPath } from "@cms/lib/generatePreviewPath"
+import { getServerSideURL } from "@cms/lib/getUrl"
 import {
   MetaDescriptionField,
   MetaImageField,
   MetaTitleField,
   OverviewField,
   PreviewField,
-} from '@payloadcms/plugin-seo/fields'
-import { getServerSideURL } from '@cms/lib/getUrl'
+} from "@payloadcms/plugin-seo/fields"
+import type { CollectionConfig } from "payload"
 
-export const Pages: CollectionConfig<'pages'> = {
-  slug: 'pages',
+import { validate } from "./hooks/validate"
+
+export const Pages: CollectionConfig<"pages"> = {
+  slug: "pages",
   access: {
     create: authenticated,
     delete: authenticated,
@@ -38,12 +37,12 @@ export const Pages: CollectionConfig<'pages'> = {
     slug: true,
   },
   admin: {
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    defaultColumns: ["title", "slug", "updatedAt"],
     livePreview: {
       url: ({ data }) => {
         const path = generatePreviewPath({
-          slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'pages',
+          slug: typeof data?.slug === "string" ? data.slug : "",
+          collection: "pages",
         })
 
         return `${getServerSideURL()}${path}`
@@ -51,57 +50,57 @@ export const Pages: CollectionConfig<'pages'> = {
     },
     preview: (data) => {
       const path = generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'pages',
+        slug: typeof data?.slug === "string" ? data.slug : "",
+        collection: "pages",
       })
 
       return `${getServerSideURL()}${path}`
     },
-    useAsTitle: 'title',
+    useAsTitle: "title",
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
+      name: "title",
+      type: "text",
       required: true,
     },
     {
-      name: 'lang',
-      type: 'text',
+      name: "lang",
+      type: "text",
       required: true,
     },
     {
-      type: 'tabs',
+      type: "tabs",
       tabs: [
         {
           fields: [hero],
-          label: 'Hero',
+          label: "Hero",
         },
         {
           fields: [
             {
-              name: 'layout',
-              type: 'blocks',
+              name: "layout",
+              type: "blocks",
               blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
               required: true,
             },
           ],
-          label: 'Content',
+          label: "Content",
         },
         {
-          name: 'meta',
-          label: 'SEO',
+          name: "meta",
+          label: "SEO",
           fields: [
             OverviewField({
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
-              imagePath: 'meta.image',
+              titlePath: "meta.title",
+              descriptionPath: "meta.description",
+              imagePath: "meta.image",
             }),
             MetaTitleField({
               hasGenerateFn: true,
             }),
             MetaImageField({
-              relationTo: 'media',
+              relationTo: "media",
             }),
 
             MetaDescriptionField({}),
@@ -110,18 +109,18 @@ export const Pages: CollectionConfig<'pages'> = {
               hasGenerateFn: true,
 
               // field paths to match the target field for data
-              titlePath: 'meta.title',
-              descriptionPath: 'meta.description',
+              titlePath: "meta.title",
+              descriptionPath: "meta.description",
             }),
           ],
         },
       ],
     },
     {
-      name: 'publishedAt',
-      type: 'date',
+      name: "publishedAt",
+      type: "date",
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
       },
     },
     ...slugField(),

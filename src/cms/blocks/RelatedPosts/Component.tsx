@@ -1,10 +1,8 @@
-import clsx from 'clsx'
-import React from 'react'
-import RichText from '@cms/components/RichText'
-
-import type { Post } from '@payload-types'
-
-import { Card } from '@cms/components/Card'
+import React from "react"
+import { Card } from "@cms/components/Card"
+import RichText from "@cms/components/RichText"
+import type { Post } from "@payload-types"
+import clsx from "clsx"
 
 export type RelatedPostsProps = {
   className?: string
@@ -12,18 +10,20 @@ export type RelatedPostsProps = {
   introContent?: any
 }
 
-export function RelatedPosts (props: RelatedPostsProps) {
+export function RelatedPosts(props: RelatedPostsProps) {
   const { className, docs, introContent } = props
 
   return (
-    <div className={clsx('container', className)}>
+    <div className={clsx("container", className)}>
       {introContent && <RichText content={introContent} enableGutter={false} />}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-stretch">
         {docs?.map((doc, index) => {
-          if (typeof doc === 'string') return null
+          if (typeof doc === "string") return null
 
-          return <Card key={index} doc={doc} relationTo="posts" showCategories />
+          return (
+            <Card key={index} doc={doc} relationTo="posts" showCategories />
+          )
         })}
       </div>
     </div>

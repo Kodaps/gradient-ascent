@@ -1,11 +1,19 @@
-'use client'
-import React, { useCallback, useEffect } from 'react'
-import { TextFieldClientProps } from 'payload'
+"use client"
 
-import { useField, Button, TextInput, FieldLabel, useFormFields, useForm } from '@payloadcms/ui'
+import React, { useCallback, useEffect } from "react"
+import {
+  Button,
+  FieldLabel,
+  TextInput,
+  useField,
+  useForm,
+  useFormFields,
+} from "@payloadcms/ui"
+import { TextFieldClientProps } from "payload"
 
-import { slugify } from './slugify'
-import './index.css'
+import { slugify } from "./slugify"
+
+import "./index.css"
 
 type SlugComponentProps = {
   fieldToUse: string
@@ -21,7 +29,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
 }) => {
   const { label } = field
 
-  const checkboxFieldPath = path?.includes('.')
+  const checkboxFieldPath = path?.includes(".")
     ? `${path}.${checkboxFieldPathFromProps}`
     : checkboxFieldPathFromProps
 
@@ -47,7 +55,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
 
         if (value !== formattedSlug) setValue(formattedSlug)
       } else {
-        if (value !== '') setValue('')
+        if (value !== "") setValue("")
       }
     }
   }, [targetFieldValue, checkboxValue, setValue, value])
@@ -57,12 +65,12 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
       e.preventDefault()
 
       dispatchFields({
-        type: 'UPDATE',
+        type: "UPDATE",
         path: checkboxFieldPath,
         value: !checkboxValue,
       })
     },
-    [checkboxValue, checkboxFieldPath, dispatchFields],
+    [checkboxValue, checkboxFieldPath, dispatchFields]
   )
 
   const readOnly = readOnlyFromProps || checkboxValue
@@ -73,7 +81,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
         <FieldLabel htmlFor={`field-${path}`} label={label} />
 
         <Button className="lock-button" buttonStyle="none" onClick={handleLock}>
-          {checkboxValue ? 'Unlock' : 'Lock'}
+          {checkboxValue ? "Unlock" : "Lock"}
         </Button>
       </div>
 

@@ -1,103 +1,103 @@
 {
-    "code_is_fun": "Le code est un jeu!",
-    "home": {
-        "code_is_a_game_our_mission": "Le code est un jeu... un jeu d'exploration, de construction, de logique. Notre but : aider à découvrir comment le code peut être amusant.",
-        "title": "Accueil",
-        "metatitle": "Kodaps - Apprendre à coder",
-        "metadescription": "Découvrez React, Next JS, JavaScript, TypeScript, et d'autres technologies passionnantes ! "
-    },
-    "menu": {
-        "home": "Accueil",
-        "about": "A propos",
-        "blog": "Blog",
-        "resources": "Ressources"
-    },
-    "blog": {
-        "subtitle": "Découvrez les dernières actualités, articles et vidéos !",
-        "title": "Derniers articles",
-        "see_all": "Voir tous",
-        "h1": "Le Blog",
-        "category": "Catégorie :",
-        "tagged": "Articles Taggués avec :",
-        "categories": "Les catégories du blog",
-        "tags": "Les tags du blog"
-    },
-    "hero": {
-        "tagline": "Apprendre le code avec ",
-        "title": "Venez plonger dans le code avec <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500'>kodaps</span>",
-        "subtitle": "Nous croyons que le code devrait être amusant. Rejoignez nous dans un voyage de découverte dans le monde de la programmation, venez vous immerser en Git, React, TypeScript, NextJS et plus!"
-    },
-    "read": "Lire",
-    "link": {
-        "youtube": "https://www.youtube.com/channel/UCzdX32OIhpfrdxQRhN2s98w",
-        "facebook": "https://www.facebook.com/KodapsFR"
-    },
-    "submenu": {
-        "react": "React & Next JS",
-        "all_categories": "Tous",
-        "frameworks": "Frameworks",
-        "javascript": "JS, TS & NodeJS",
-        "backend": "Backend, BDD et APIs",
-        "coderlife": "La Vie de Codeur"
-    },
-    "site": {
-        "title": "Apprendre à coder"
-    },
-    "sitemap": {
-        "title": "Les pages du site Kodaps en Français",
-        "mainpages": "Les pages principales",
-        "metatitle": "Pages du site EcoTree",
-        "metadescription": "Les pages du site web Kodaps"
-    },
-    "switch_languages": "English version here",
-    "newsletter": {
-        "title": "Newsletter",
-        "pitch": "Inscrivez-vous à TechBytes - ma lettre d'information (presque!) hebdomadaire dans laquelle je partage des conseils pratiques, des astuces, des bibliothèques et des frameworks que j'ai découverts, ainsi que des informations utiles glanés sur le Web, directement dans votre boîte de réception.",
-        "h1": "Restez dans le coup avec TechBytes !",
-        "subtitle": "Des conseils, actus et resources livrées gratuitement dans votre boite aux lettres (presque) toutes les semaines !",
-        "ul": {
-            "1": {
-                "title": "Conseils techniques",
-                "desc": "Des plongées profondes dans les technologies émergentes ou établies (frameworks, bibliothèques) et la façon dont elles peuvent vous être utiles."
-            },
-            "2": {
-                "title": "Perspectives et découvertes",
-                "desc": "J'y partage les choses amusantes et passionnantes que j'ai trouvées sur le web, ainsi que les enseignements que j'en ai tirées."
-            },
-            "3": {
-                "title": "Nouvelles & Actus",
-                "desc": "Restez au fait de ce qui se trame dans le monde de la technologie et des dernières mises à jour de Kodaps avec du nouveau contenu, des ressources et des cours."
-            }
-        }
-    },
-    "courses": {
-        "desc": "Cours, projets, guides, apprentissage et tutoriels"
-    },
-    "resources": {
-        "desc": "Des ressources pour aider à comprendre et à construire.",
-        "h1": "Ressources utiles"
-    },
-    "help": {
-        "desc": "Posez vos questions, Réservez un appel ou une session en direct. (bientôt)",
-        "h1": "Besoin d'aide ?"
-    },
-    "documentation": {
-        "desc": "Livrets, cahiers d'exercices, fiches et antisèches (à venir)",
-        "title": "Guides & Livrets"
-    },
-    "learning-journey": {
-        "title": {
-            "git": "Etape 1 : Git & GitHub"
-        },
-        "description": {
-            "git": ""
-        },
-        "cta": {
-            "git": ""
-        }
-    },
-    "bits": {
-        "title": "Questions récentes",
-        "subtitle": "Vous avez demandé (ou nous nous sommes demandé !) et nous avons répondu. Certaines questions nécessitent une longue réponse, d'autres... pas tant que ça. N'hésitez pas à nous envoyer vos propres questions :)"
+  "code_is_fun": "Le code est un jeu!",
+  "home": {
+    "code_is_a_game_our_mission": "Le code est un jeu... un jeu d'exploration, de construction, de logique. Notre but : aider à découvrir comment le code peut être amusant.",
+    "title": "Accueil",
+    "metatitle": "Kodaps - Apprendre à coder",
+    "metadescription": "Découvrez React, Next JS, JavaScript, TypeScript, et d'autres technologies passionnantes ! "
+  },
+  "menu": {
+    "home": "Accueil",
+    "about": "A propos",
+    "blog": "Blog",
+    "resources": "Ressources"
+  },
+  "blog": {
+    "subtitle": "Découvrez les dernières actualités, articles et vidéos !",
+    "title": "Derniers articles",
+    "see_all": "Voir tous",
+    "h1": "Le Blog",
+    "category": "Catégorie :",
+    "tagged": "Articles Taggués avec :",
+    "categories": "Les catégories du blog",
+    "tags": "Les tags du blog"
+  },
+  "hero": {
+    "tagline": "Apprendre le code avec ",
+    "title": "Venez plonger dans le code avec <span class='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500'>kodaps</span>",
+    "subtitle": "Nous croyons que le code devrait être amusant. Rejoignez nous dans un voyage de découverte dans le monde de la programmation, venez vous immerser en Git, React, TypeScript, NextJS et plus!"
+  },
+  "read": "Lire",
+  "link": {
+    "youtube": "https://www.youtube.com/channel/UCzdX32OIhpfrdxQRhN2s98w",
+    "facebook": "https://www.facebook.com/KodapsFR"
+  },
+  "submenu": {
+    "react": "React & Next JS",
+    "all_categories": "Tous",
+    "frameworks": "Frameworks",
+    "javascript": "JS, TS & NodeJS",
+    "backend": "Backend, BDD et APIs",
+    "coderlife": "La Vie de Codeur"
+  },
+  "site": {
+    "title": "Apprendre à coder"
+  },
+  "sitemap": {
+    "title": "Les pages du site Kodaps en Français",
+    "mainpages": "Les pages principales",
+    "metatitle": "Pages du site EcoTree",
+    "metadescription": "Les pages du site web Kodaps"
+  },
+  "switch_languages": "English version here",
+  "newsletter": {
+    "title": "Newsletter",
+    "pitch": "Inscrivez-vous à TechBytes - ma lettre d'information (presque!) hebdomadaire dans laquelle je partage des conseils pratiques, des astuces, des bibliothèques et des frameworks que j'ai découverts, ainsi que des informations utiles glanés sur le Web, directement dans votre boîte de réception.",
+    "h1": "Restez dans le coup avec TechBytes !",
+    "subtitle": "Des conseils, actus et resources livrées gratuitement dans votre boite aux lettres (presque) toutes les semaines !",
+    "ul": {
+      "1": {
+        "title": "Conseils techniques",
+        "desc": "Des plongées profondes dans les technologies émergentes ou établies (frameworks, bibliothèques) et la façon dont elles peuvent vous être utiles."
+      },
+      "2": {
+        "title": "Perspectives et découvertes",
+        "desc": "J'y partage les choses amusantes et passionnantes que j'ai trouvées sur le web, ainsi que les enseignements que j'en ai tirées."
+      },
+      "3": {
+        "title": "Nouvelles & Actus",
+        "desc": "Restez au fait de ce qui se trame dans le monde de la technologie et des dernières mises à jour de Kodaps avec du nouveau contenu, des ressources et des cours."
+      }
     }
+  },
+  "courses": {
+    "desc": "Cours, projets, guides, apprentissage et tutoriels"
+  },
+  "resources": {
+    "desc": "Des ressources pour aider à comprendre et à construire.",
+    "h1": "Ressources utiles"
+  },
+  "help": {
+    "desc": "Posez vos questions, Réservez un appel ou une session en direct. (bientôt)",
+    "h1": "Besoin d'aide ?"
+  },
+  "documentation": {
+    "desc": "Livrets, cahiers d'exercices, fiches et antisèches (à venir)",
+    "title": "Guides & Livrets"
+  },
+  "learning-journey": {
+    "title": {
+      "git": "Etape 1 : Git & GitHub"
+    },
+    "description": {
+      "git": ""
+    },
+    "cta": {
+      "git": ""
+    }
+  },
+  "bits": {
+    "title": "Questions récentes",
+    "subtitle": "Vous avez demandé (ou nous nous sommes demandé !) et nous avons répondu. Certaines questions nécessitent une longue réponse, d'autres... pas tant que ça. N'hésitez pas à nous envoyer vos propres questions :)"
+  }
 }

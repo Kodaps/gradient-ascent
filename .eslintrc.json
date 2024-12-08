@@ -1,9 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript",   "plugin:tailwindcss/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
   "rules": {
     // don't allow console.log statements and only allow info, warn and error logs
-    "no-console": ["error", { "allow": ["info", "warn", "error"] }],
-    "tailwindcss/classnames-order": "error"
+    "no-console": ["error", { "allow": ["info", "warn", "error"] }]
   },
   "overrides": [
     {

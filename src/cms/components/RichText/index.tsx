@@ -1,7 +1,7 @@
-import { cn } from '@cms/lib/cn'
-import React from 'react'
+import React from "react"
+import { cn } from "@cms/lib/cn"
 
-import { serialiseLexical } from './serialise'
+import { serialiseLexical } from "./serialise"
 
 type Props = {
   className?: string
@@ -10,7 +10,7 @@ type Props = {
   enableProse?: boolean
 }
 
-function RichText ({
+function RichText({
   className,
   content,
   enableGutter = true,
@@ -24,17 +24,17 @@ function RichText ({
     <div
       className={cn(
         {
-          'container ': enableGutter,
-          'max-w-none': !enableGutter,
-          'mx-auto prose dark:prose-invert ': enableProse,
+          "container ": enableGutter,
+          "max-w-none": !enableGutter,
+          "mx-auto prose dark:prose-invert ": enableProse,
         },
-        className,
+        className
       )}
     >
       {content &&
         !Array.isArray(content) &&
-        typeof content === 'object' &&
-        'root' in content &&
+        typeof content === "object" &&
+        "root" in content &&
         serialiseLexical({ nodes: content?.root?.children })}
     </div>
   )

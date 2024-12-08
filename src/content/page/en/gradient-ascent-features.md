@@ -6,53 +6,36 @@ lang: en
 slug: gradient-ascent-features
 coreSlug: features
 title: Gradient Ascent Features
-
 ---
 
-Here are the features that are planned for this starter. 
-
+Here are the features that are planned for this starter.
 
 ## General
 
-
-✅ MDX 
-
+✅ MDX
 
 ## ContentLayer based content
 
+✅  Blogs Posts,
 
-✅  Blogs Posts, 
-
-
-✅  Pages, 
-
+✅  Pages,
 
 ✅  Portfolio
 
+🔳  Product
 
-🔳  Product 
+## SEO
 
+✅ Robots file
 
-## SEO 
-
-
-✅ Robots file 
-
-
-🔳 Sitemap 
-
+🔳 Sitemap
 
 🔳 Structured data
 
-
-## i18n 
-
+## i18n
 
 ✅ Middleware language redirect
 
-
-🔳 Set alt in Language Context 
-
+🔳 Set alt in Language Context
 
 ## Auth
-

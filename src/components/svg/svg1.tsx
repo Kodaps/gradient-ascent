@@ -1,10 +1,6 @@
 const SVG1 = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
-      viewBox="0 0 800 800"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 800 800">
       <defs>
         <filter
           id="uuunion-blur"
@@ -107,8 +103,7 @@ const SVG1 = () => {
         filter="url(#uuunion-blur2)"
       ></path>
     </svg>
-  );
-};
+  )
+}
 
-
-export default SVG1;
+export default SVG1

@@ -1,4 +1,5 @@
-import * as Sentry from '@sentry/nextjs'
+import * as Sentry from "@sentry/nextjs"
+
 const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN
 
 const enabled = !!dsn
@@ -12,7 +13,7 @@ Sentry.init({
 
 if (enabled) {
   // eslint-disable-next-line no-console
-  console.log('Sentry inited')
+  console.log("Sentry inited")
 }
 
 export {}

@@ -1,16 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { Lang } from '@/utils/i18n';
-import { getPermalink } from '@/utils/content';
-import { Bit } from 'contentlayer/generated';
-import { Card } from '../ui/card';
+
+import { Bit } from "contentlayer/generated"
+
+import { Card } from "@/components/ui/card"
 
 interface BitCardProps {
-  className?: string;
+  className?: string
   bit: Bit
 }
 
-export const BitCard: React.FC<BitCardProps> = ({className, bit}) => {
-  return <Card>
-  </Card>;
+export const BitCard: React.FC<BitCardProps> = ({ className, bit }) => {
+  return <Card></Card>
 }

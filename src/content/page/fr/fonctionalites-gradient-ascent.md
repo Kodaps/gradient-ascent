@@ -6,6 +6,6 @@ lang: fr
 slug: fonctionalites-gradient-ascent
 coreSlug: features
 title: Les fonctionnalités de Gradient Ascent
-
 ---
+
 undefined

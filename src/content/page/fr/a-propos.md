@@ -6,6 +6,6 @@ lang: fr
 slug: a-propos
 coreSlug: about
 title: A propos de Gradient Ascent
-
 ---
+
 undefined

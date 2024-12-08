@@ -1,40 +1,51 @@
-'use client';
+"use client"
 
-import { getOtherLanguages, Lang } from "@/lib/i18n";
-import { LinkFormat, useAltLinksDispatcher } from "./AltLinkProvider";
-import { useEffect } from "react";
+import { useEffect } from "react"
+
+import { getOtherLanguages, Lang } from "@/lib/i18n"
+
+import { LinkFormat, useAltLinksDispatcher } from "./AltLinkProvider"
 
 interface AltLinkProps {
-  altLinks: LinkFormat;
-  lang: Lang;
-  children?: React.ReactNode;
-  hidden?: boolean;
+  altLinks: LinkFormat
+  lang: Lang
+  children?: React.ReactNode
+  hidden?: boolean
 }
 
-
-export const AltLangLinks = ({altLinks, lang, children, hidden}: AltLinkProps) => {
-
-  const dispatch = useAltLinksDispatcher();
+export const AltLangLinks = ({
+  altLinks,
+  lang,
+  children,
+  hidden,
+}: AltLinkProps) => {
+  const dispatch = useAltLinksDispatcher()
 
   useEffect(() => {
     if (altLinks) {
-      dispatch({type: 'set', payload:  altLinks});
+      dispatch({ type: "set", payload: altLinks })
     }
   }, [altLinks])
 
-  let otherLanguages:Array<string> = [];
-
+  let otherLanguages: Array<string> = []
 
   if (altLinks) {
-    otherLanguages = getOtherLanguages(lang).filter((lang) => !!altLinks[lang]);
+    otherLanguages = getOtherLanguages(lang).filter((lang) => !!altLinks[lang])
   }
 
-  return <> { otherLanguages.map((lang) => <a id={`lang_${lang}`}
-              key={`lang_${lang}`}
-              href={altLinks[lang]}
-              className={hidden ? 'hidden': ''}>
-              {children}
-        </a>)
-      }</>;
-
+  return (
+    <>
+      {" "}
+      {otherLanguages.map((lang) => (
+        <a
+          id={`lang_${lang}`}
+          key={`lang_${lang}`}
+          href={altLinks[lang]}
+          className={hidden ? "hidden" : ""}
+        >
+          {children}
+        </a>
+      ))}
+    </>
+  )
 }
